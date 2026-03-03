@@ -93,6 +93,7 @@ jobs:
         today = now.strftime("%Y-%m-%d")
         yesterday = (now - timedelta(days=1)).strftime("%Y-%m-%d")
         force_run = os.getenv("FORCE_RUN", "false").lower() == "true"
+        yesterday_weekday = (now - timedelta(days=1)).weekday()
         targets = {
             # Product Hunt 数据窗口取昨天，但写入按今天聚合，确保当日页三源齐全。
             "producthunt": {"fetch_date": yesterday, "output_date": today},
@@ -108,8 +109,10 @@ jobs:
             output_date = cfg["output_date"]
             outputs[f"{source}_fetch_date"] = fetch_date
             outputs[f"{source}_output_date"] = output_date
-            # 始终执行抓取。若同日已存在数据，将在 storage 层按 source+date 覆盖。
+            # arXiv 在目标抓取日为周末时跳过。周末常常无新论文，强行抓取会导致整个 workflow 失败。
             skip = False
+            if source == "arxiv" and yesterday_weekday >= 5 and not force_run:
+                skip = True
             outputs[f"skip_{source}"] = "true" if skip else "false"
             action = "skip" if skip else "run"
             print(
@@ -152,11 +155,13 @@ jobs:
         OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL || vars.OPENAI_BASE_URL }}
         ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
         ARXIV_MAX_RESULTS: ${{ vars.ARXIV_MAX_RESULTS }}
+        ARXIV_FALLBACK_DAYS: ${{ vars.ARXIV_FALLBACK_DAYS }}
         ARXIV_TARGET_DATE: ${{ steps.precheck.outputs.arxiv_fetch_date }}
         ARXIV_OUTPUT_DATE: ${{ steps.precheck.outputs.arxiv_output_date }}
       run: |
         export ARXIV_CATEGORIES="${ARXIV_CATEGORIES:-cs.AI,cs.LG,cs.CL,cs.CV}"
         export ARXIV_MAX_RESULTS="${ARXIV_MAX_RESULTS:-30}"
+        export ARXIV_FALLBACK_DAYS="${ARXIV_FALLBACK_DAYS:-3}"
         python scripts/arxiv_papers_to_md.py
 
     - name: Fetch GitHub Trending
@@ -181,9 +186,11 @@ jobs:
         OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL || vars.OPENAI_BASE_URL }}
         CLAWHUB_TARGET_DATE: ${{ steps.precheck.outputs.clawhub_fetch_date }}
         CLAWHUB_OUTPUT_DATE: ${{ steps.precheck.outputs.clawhub_output_date }}
+        CLAWHUB_ALLOW_FALLBACK: ${{ vars.CLAWHUB_ALLOW_FALLBACK }}
         CLAWHUB_MAX_RESULTS: ${{ vars.CLAWHUB_MAX_RESULTS }}
         CLAWHUB_TIMEZONE: ${{ vars.CLAWHUB_TIMEZONE }}
       run: |
+        export CLAWHUB_ALLOW_FALLBACK="${CLAWHUB_ALLOW_FALLBACK:-false}"
         export CLAWHUB_MAX_RESULTS="${CLAWHUB_MAX_RESULTS:-25}"
         export CLAWHUB_TIMEZONE="${CLAWHUB_TIMEZONE:-Asia/Singapore}"
         python scripts/clawhub_skills_to_md.py
@@ -203,6 +210,12 @@ jobs:
             "github": "${{ steps.precheck.outputs.github_output_date }}",
             "clawhub": "${{ steps.precheck.outputs.clawhub_output_date }}",
         }
+        skip_flags = {
+            "producthunt": "${{ steps.precheck.outputs.skip_producthunt }}",
+            "arxiv": "${{ steps.precheck.outputs.skip_arxiv }}",
+            "github": "${{ steps.precheck.outputs.skip_github }}",
+            "clawhub": "${{ steps.precheck.outputs.skip_clawhub }}",
+        }
 
         def score_total(value):
             if isinstance(value, dict):
@@ -212,6 +225,9 @@ jobs:
         has_openai = os.getenv("HAS_OPENAI", "false").lower() == "true"
         errors = []
         for source, date_str in targets.items():
+            if str(skip_flags.get(source, "false")).lower() == "true":
+                print(f"post-check skip: {source} ({date_str})")
+                continue
             parquet_path = Path("data/structured") / f"{date_str}.parquet"
             if not parquet_path.exists():
                 errors.append(f"{source} {date_str}: parquet missing")
@@ -226,6 +242,16 @@ jobs:
                 continue
             src_df = df[df["source"].astype(str).str.lower() == source]
             if src_df.empty:
+                if source == "clawhub":
+                    md_path = Path("data/clawhub") / f"clawhub-daily-{date_str}.md"
+                    if md_path.exists():
+                        try:
+                            md_text = md_path.read_text(encoding="utf-8")
+                        except Exception:
+                            md_text = ""
+                        if "> 共 0 个 skills" in md_text:
+                            print(f"post-check accept: clawhub {date_str} has 0 skills")
+                            continue
                 errors.append(f"{source} {date_str}: no rows")
                 continue
             if "score" not in src_df.columns:

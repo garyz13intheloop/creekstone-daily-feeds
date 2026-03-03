@@ -372,6 +372,7 @@ def fetch_arxiv_papers(
     max_results: int = 10,
     target_date: str = "",
     allow_previous_day_fallback: bool = True,
+    fallback_days_remaining: int | None = None,
 ) -> List[ArxivPaper]:
     """从arXiv API获取最新论文"""
     if categories is None:
@@ -398,6 +399,10 @@ def fetch_arxiv_papers(
     else:
         end_date = datetime.now(timezone.utc)
     start_date = end_date - timedelta(days=1 if strict_day_mode else 7)
+
+    if fallback_days_remaining is None:
+        fallback_days_remaining = _get_int_env("ARXIV_FALLBACK_DAYS", 3)
+    fallback_days_remaining = max(0, int(fallback_days_remaining))
 
     search_query = category_query
     if strict_day_mode and target_day_dt is not None:
@@ -493,20 +498,32 @@ def fetch_arxiv_papers(
         print(f"最近7天的论文: {len(recent_entries)} 篇")
 
         if not recent_entries:
-            if strict_day_mode and target_day_dt is not None and allow_previous_day_fallback:
+            if (
+                strict_day_mode
+                and target_day_dt is not None
+                and allow_previous_day_fallback
+                and fallback_days_remaining > 0
+            ):
                 fallback_date = (target_day_dt - timedelta(days=1)).strftime('%Y-%m-%d')
                 print(
                     f"目标日期 {upper_date} 未命中论文，自动回退到前一天 {fallback_date} 重试..."
+                    f"（剩余回退次数: {fallback_days_remaining}）"
                 )
                 return fetch_arxiv_papers(
                     categories=categories,
                     max_results=max_results,
                     target_date=fallback_date,
-                    allow_previous_day_fallback=False,
+                    allow_previous_day_fallback=True,
+                    fallback_days_remaining=fallback_days_remaining - 1,
                 )
             if _allow_mock_data():
                 print("未找到窗口内论文，ALLOW_MOCK_DATA=true，使用模拟数据...")
                 return fetch_mock_papers()
+            if strict_day_mode and target_day_dt is not None and allow_previous_day_fallback:
+                print(
+                    f"目标日期 {upper_date} 及其向前回退窗口均未命中论文，"
+                    f"已用尽 { _get_int_env('ARXIV_FALLBACK_DAYS', 3) } 天回退尝试。"
+                )
             raise RuntimeError(
                 f"未找到 {cutoff_date}~{upper_date} 的论文；"
                 "请增大 ARXIV_MAX_PAGES 或检查目标日期。"
