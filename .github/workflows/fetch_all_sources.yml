@@ -284,10 +284,34 @@ jobs:
       run: |
         BRANCH="${{ github.ref_name }}"
         REMOTE_URL="https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git"
+        BASE_SHA="${{ github.sha }}"
+        LOCAL_HEAD="$(git rev-parse HEAD)"
+
+        if [ "${LOCAL_HEAD}" = "${BASE_SHA}" ]; then
+          echo "No new commit to push."
+          exit 0
+        fi
+
+        if git push "${REMOTE_URL}" "HEAD:${BRANCH}"; then
+          exit 0
+        fi
+
+        echo "Initial push failed, checking whether remote advanced during this run..."
+        git fetch "${REMOTE_URL}" "${BRANCH}"
+        REMOTE_HEAD="$(git rev-parse FETCH_HEAD)"
+
+        if [ "${REMOTE_HEAD}" != "${BASE_SHA}" ]; then
+          echo "Remote branch advanced during workflow run:"
+          echo "  workflow base: ${BASE_SHA}"
+          echo "  current remote: ${REMOTE_HEAD}"
+          echo "Skipping push to avoid rebasing generated files with same-day conflicts."
+          exit 0
+        fi
+
+        echo "Remote did not advance; retrying push for transient failure..."
         for i in 1 2 3; do
-          git pull --rebase "${REMOTE_URL}" "${BRANCH}" && \
           git push "${REMOTE_URL}" "HEAD:${BRANCH}" && exit 0
-          echo "Push failed on attempt ${i}, retrying..."
+          echo "Push failed on retry ${i}, sleeping..."
           sleep 5
         done
         echo "Push failed after retries."
