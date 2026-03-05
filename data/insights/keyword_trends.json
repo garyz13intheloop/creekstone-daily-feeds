@@ -30,24 +30,25 @@
     "2026-03-01",
     "2026-03-02",
     "2026-03-03",
-    "2026-03-04"
+    "2026-03-04",
+    "2026-03-05"
   ],
   "keywords": [
     {
       "keyword": "命令行工具",
       "canonical": "命令行工具",
-      "score": 0.015,
-      "growth": 0.0036,
-      "acceleration": 3.1601,
-      "tfidf": 0.0036,
-      "z_score": 3.1601,
+      "score": 0.0183,
+      "growth": 0.004,
+      "acceleration": 3.6057,
+      "tfidf": 0.004,
+      "z_score": 3.6057,
       "idf": 1.0,
-      "recent_freq": 0.0036,
-      "recent_share": 0.0036,
-      "total": 15,
-      "weighted_total": 0.0235,
-      "weighted_total_raw": 15.0,
-      "active_days": 7,
+      "recent_freq": 0.004,
+      "recent_share": 0.004,
+      "total": 16,
+      "weighted_total": 0.0247,
+      "weighted_total_raw": 16.0,
+      "active_days": 8,
       "recent_days": 3,
       "series": [
         {
@@ -235,6 +236,12 @@
           "count": 3,
           "weighted_count": 3.0,
           "share": 0.003517
+        },
+        {
+          "date": "2026-03-05",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001135
         }
       ]
     }
