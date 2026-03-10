@@ -17,6 +17,32 @@ def get_openai_timeout(default: float = 60.0) -> float:
     return default
 
 
+def get_openai_retry_attempts(default: int = 5) -> int:
+    raw = os.getenv("OPENAI_RETRY_ATTEMPTS", "").strip()
+    if not raw:
+        return default
+    try:
+        value = int(raw)
+        if value > 0:
+            return value
+    except Exception:
+        pass
+    return default
+
+
+def get_openai_retry_base_delay(default: float = 1.5) -> float:
+    raw = os.getenv("OPENAI_RETRY_BASE_DELAY", "").strip()
+    if not raw:
+        return default
+    try:
+        value = float(raw)
+        if value > 0:
+            return value
+    except Exception:
+        pass
+    return default
+
+
 def is_gpt5_model(model_name: str) -> bool:
     return (model_name or "").startswith("gpt-5")
 
@@ -58,6 +84,14 @@ def _is_retryable_error(exc: Exception) -> bool:
         or "too many requests" in msg
         or "429" in msg
         or "temporarily unavailable" in msg
+        or "service unavailable" in msg
+        or "upstream overloaded" in msg
+        or "upstream load" in msg
+        or "overloaded" in msg
+        or "saturated" in msg
+        or "稍后再试" in msg
+        or "负载已饱和" in msg
+        or "当前分组上游负载已饱和" in msg
     )
 
 
@@ -90,9 +124,15 @@ def _call_with_hard_timeout(fn, timeout_sec: float):
         signal.signal(signal.SIGALRM, old)
 
 
+def _retry_sleep_seconds(attempt_index: int) -> float:
+    base = get_openai_retry_base_delay()
+    return min(20.0, base * (2 ** attempt_index))
+
+
 def _create_with_retry(client, kwargs: dict, timeout: float):
     last_exc = None
-    for attempt in range(2):
+    attempts = get_openai_retry_attempts()
+    for attempt in range(attempts):
         try:
             try:
                 return _call_with_hard_timeout(
@@ -109,11 +149,48 @@ def _create_with_retry(client, kwargs: dict, timeout: float):
                 )
         except Exception as exc:
             last_exc = exc
-            if attempt == 0 and _is_retryable_error(exc):
-                time.sleep(0.8)
+            if attempt < attempts - 1 and _is_retryable_error(exc):
+                time.sleep(_retry_sleep_seconds(attempt))
                 continue
             raise
     raise last_exc if last_exc else RuntimeError("chat completion failed")
+
+
+def create_embeddings_with_retry(
+    *,
+    client,
+    model: str,
+    input_texts,
+    timeout: float | None = None,
+):
+    timeout = timeout if timeout is not None else get_openai_timeout()
+    last_exc = None
+    attempts = get_openai_retry_attempts()
+    for attempt in range(attempts):
+        try:
+            return _call_with_hard_timeout(
+                lambda: client.embeddings.create(model=model, input=input_texts, timeout=timeout),
+                timeout + 2,
+            )
+        except TypeError:
+            try:
+                return _call_with_hard_timeout(
+                    lambda: client.embeddings.create(model=model, input=input_texts),
+                    timeout + 2,
+                )
+            except Exception as exc:
+                last_exc = exc
+                if attempt < attempts - 1 and _is_retryable_error(exc):
+                    time.sleep(_retry_sleep_seconds(attempt))
+                    continue
+                raise
+        except Exception as exc:
+            last_exc = exc
+            if attempt < attempts - 1 and _is_retryable_error(exc):
+                time.sleep(_retry_sleep_seconds(attempt))
+                continue
+            raise
+    raise last_exc if last_exc else RuntimeError("embedding request failed")
 
 
 def chat_completion_content(

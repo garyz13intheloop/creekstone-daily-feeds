@@ -15,7 +15,11 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 
-from common.openai_fallback import chat_completion_content, get_openai_timeout
+from common.openai_fallback import (
+    chat_completion_content,
+    create_embeddings_with_retry,
+    get_openai_timeout,
+)
 
 try:
     from zoneinfo import ZoneInfo
@@ -953,7 +957,12 @@ def embed_texts(client: Any, texts: list[str], model: str) -> list[list[float]]:
     if not texts:
         return []
     try:
-        response = client.embeddings.create(model=model, input=texts)
+        response = create_embeddings_with_retry(
+            client=client,
+            model=model,
+            input_texts=texts,
+            timeout=get_openai_timeout(),
+        )
     except Exception as exc:
         raise RuntimeError(f"embedding request failed: {exc}") from exc
 
