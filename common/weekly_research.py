@@ -1131,10 +1131,159 @@ def _theme_card_messages(cluster: dict[str, Any]) -> list[dict[str, str]]:
     ]
 
 
-def _report_messages(payload: dict[str, Any], week_start: str, week_end: str, report_depth: str) -> list[dict[str, str]]:
-    themes = payload.get("themes", [])
-    keyword_boards = payload.get("keyword_boards", {})
-    project_boards = payload.get("project_boards", {})
+def _truncate_text(value: Any, limit: int) -> str:
+    text = str(value or "").strip()
+    if len(text) <= limit:
+        return text
+    if limit <= 1:
+        return text[:limit]
+    return text[: limit - 1].rstrip() + "…"
+
+
+def _compact_project_for_prompt(project: dict[str, Any], *, summary_limit: int = 120) -> dict[str, Any]:
+    return {
+        "id": str(project.get("id", "")).strip(),
+        "title": _truncate_text(project.get("title", ""), 120),
+        "source": str(project.get("source", "")).strip(),
+        "url": str(project.get("url", "")).strip(),
+        "positioning": _truncate_text(project.get("positioning", "") or project.get("summary", ""), summary_limit),
+        "hot": project.get("hot"),
+        "rise": project.get("rise"),
+        "score_total": project.get("score_total"),
+    }
+
+
+def _compact_theme_for_prompt(
+    theme: dict[str, Any],
+    *,
+    project_limit: int,
+    summary_limit: int,
+) -> dict[str, Any]:
+    representative_projects = theme.get("representative_projects")
+    if not isinstance(representative_projects, list) or not representative_projects:
+        representative_projects = theme.get("top_projects", [])
+    return {
+        "cluster_id": theme.get("cluster_id"),
+        "cluster_score": theme.get("cluster_score"),
+        "theme_title": _truncate_text(theme.get("theme_title", ""), 120),
+        "one_sentence_summary": _truncate_text(theme.get("one_sentence_summary", ""), 180),
+        "why_now": _truncate_text(theme.get("why_now", ""), 260),
+        "key_terms": [str(term).strip() for term in (theme.get("key_terms", []) or [])[:8] if str(term).strip()],
+        "source_mix": theme.get("source_mix", []),
+        "representative_projects": [
+            _compact_project_for_prompt(project, summary_limit=summary_limit)
+            for project in representative_projects[:project_limit]
+        ],
+        "risks_questions": [
+            _truncate_text(item, 120)
+            for item in (theme.get("risks_questions", []) or [])[:4]
+            if str(item).strip()
+        ],
+        "next_week_watchlist": [
+            _truncate_text(item, 120)
+            for item in (theme.get("next_week_watchlist", []) or [])[:4]
+            if str(item).strip()
+        ],
+    }
+
+
+def _compact_project_boards_for_prompt(
+    project_boards: dict[str, list[dict[str, Any]]],
+    *,
+    board_limit: int,
+    summary_limit: int,
+) -> dict[str, list[dict[str, Any]]]:
+    compact = {}
+    for key, items in (project_boards or {}).items():
+        compact[key] = [
+            _compact_project_for_prompt(item, summary_limit=summary_limit)
+            for item in (items or [])[:board_limit]
+        ]
+    return compact
+
+
+def _compact_keyword_boards_for_prompt(
+    keyword_boards: dict[str, list[dict[str, Any]]],
+    *,
+    item_limit: int,
+) -> dict[str, list[dict[str, Any]]]:
+    compact = {}
+    for key, items in (keyword_boards or {}).items():
+        compact[key] = [
+            {
+                "term": str(item.get("term") or item.get("keyword") or "").strip(),
+                "score": item.get("term_trend_score", item.get("score")),
+                "support_projects": item.get("support_projects"),
+                "support_sources": item.get("support_sources"),
+                "idf_like": item.get("idf_like"),
+                "novelty": item.get("novelty"),
+            }
+            for item in (items or [])[:item_limit]
+            if str(item.get("term") or item.get("keyword") or "").strip()
+        ]
+    return compact
+
+
+def _compact_report_payload_for_prompt(
+    payload: dict[str, Any],
+    *,
+    prompt_level: str,
+) -> dict[str, Any]:
+    if prompt_level == "minimal":
+        theme_limit = 5
+        project_limit = 2
+        board_limit = 4
+        keyword_limit = 5
+        summary_limit = 90
+        cross_source_limit = 4
+    else:
+        theme_limit = 8
+        project_limit = 3
+        board_limit = 5
+        keyword_limit = 8
+        summary_limit = 120
+        cross_source_limit = 6
+
+    themes = payload.get("themes", []) or []
+    project_boards = payload.get("project_boards", {}) or {}
+    keyword_boards = payload.get("keyword_boards", {}) or {}
+    cross_source_observations = payload.get("cross_source_observations", []) or []
+
+    return {
+        "theme_count": len(themes),
+        "themes": [
+            _compact_theme_for_prompt(theme, project_limit=project_limit, summary_limit=summary_limit)
+            for theme in themes[:theme_limit]
+        ],
+        "project_boards": _compact_project_boards_for_prompt(
+            project_boards,
+            board_limit=board_limit,
+            summary_limit=summary_limit,
+        ),
+        "keyword_boards": _compact_keyword_boards_for_prompt(
+            keyword_boards,
+            item_limit=keyword_limit,
+        ),
+        "cross_source_observations": [
+            {
+                "theme_title": _truncate_text(item.get("theme_title", ""), 120),
+                "sources": item.get("sources", []),
+                "note": _truncate_text(item.get("note", ""), 160),
+            }
+            for item in cross_source_observations[:cross_source_limit]
+        ],
+    }
+
+
+def _report_messages(
+    payload: dict[str, Any],
+    week_start: str,
+    week_end: str,
+    report_depth: str,
+    *,
+    prompt_level: str = "standard",
+) -> list[dict[str, str]]:
+    compact_payload = _compact_report_payload_for_prompt(payload, prompt_level=prompt_level)
     depth_instruction = {
         "light": "写精炼版：每部分尽量短，控制在 600-900 字。",
         "standard": "写标准版：每部分适中，控制在 1200-1800 字。",
@@ -1147,9 +1296,8 @@ def _report_messages(payload: dict[str, Any], week_start: str, week_end: str, re
         "禁止编造缺失数据。"
         f"{depth_instruction}\n\n"
         f"week: {week_start} ~ {week_end}\n"
-        f"themes: {json.dumps(themes, ensure_ascii=False)}\n"
-        f"project_boards: {json.dumps(project_boards, ensure_ascii=False)}\n"
-        f"keyword_boards: {json.dumps(keyword_boards, ensure_ascii=False)}\n"
+        f"evidence_level: {prompt_level}\n"
+        f"payload: {json.dumps(compact_payload, ensure_ascii=False)}\n"
     )
     return [
         {"role": "system", "content": "你是周度科技趋势研究员，输出严谨、可追溯、克制的中文研究报告。"},
@@ -1158,12 +1306,13 @@ def _report_messages(payload: dict[str, Any], week_start: str, week_end: str, re
 
 
 def _critic_messages(payload: dict[str, Any], markdown: str) -> list[dict[str, str]]:
+    compact_payload = _compact_report_payload_for_prompt(payload, prompt_level="minimal")
     user = (
         "请审校下面的周报，检查：重复主题、无证据断言、夸张措辞、把常识当趋势。"
         "如果通过，pass=true；若不通过，只返回需要修订的 summary bullets 或主题段落索引。"
         "输出 JSON。\n\n"
-        f"themes: {json.dumps(payload.get('themes', []), ensure_ascii=False)}\n"
-        f"report:\n{markdown[:12000]}"
+        f"themes: {json.dumps(compact_payload.get('themes', []), ensure_ascii=False)}\n"
+        f"report:\n{markdown[:9000]}"
     )
     return [
         {"role": "system", "content": "你是周报质检器。"},
@@ -1211,6 +1360,106 @@ def _chat_markdown(client: Any, messages: list[dict[str, str]], model: str) -> t
         retry_max_tokens=3600,
     )
     return content.strip(), used_model
+
+
+def _fallback_markdown_from_structured(
+    themes: list[dict[str, Any]],
+    project_boards: dict[str, list[dict[str, Any]]],
+    keyword_boards: dict[str, list[dict[str, Any]]],
+    cross_source_observations: list[dict[str, Any]],
+    week_start: str,
+    week_end: str,
+) -> str:
+    lines = [
+        "# 周度科技趋势研究报告",
+        "## 本周摘要",
+    ]
+
+    for theme in themes[: min(5, len(themes))]:
+        title = str(theme.get("theme_title", "")).strip()
+        summary = str(theme.get("one_sentence_summary", "")).strip() or str(theme.get("why_now", "")).strip()
+        citations = []
+        for project in (theme.get("representative_projects", []) or [])[:2]:
+            source = str(project.get("source", "")).strip()
+            item_id = str(project.get("id", "")).strip()
+            if source and item_id:
+                citations.append(f"[{source}:{item_id}]")
+        cite_text = " ".join(citations)
+        bullet = f"- {title}"
+        if summary:
+            bullet += f"：{summary}"
+        if cite_text:
+            bullet += f" {cite_text}"
+        lines.append(bullet)
+
+    lines.extend(["", "## 趋势主题"])
+    for idx, theme in enumerate(themes, start=1):
+        lines.append(f"### {idx}. {str(theme.get('theme_title', '')).strip()}")
+        why_now = str(theme.get("why_now", "")).strip()
+        if why_now:
+            lines.append(why_now)
+            lines.append("")
+
+        reps = theme.get("representative_projects", []) or []
+        if reps:
+            lines.append("- 代表项目：")
+            for project in reps[:5]:
+                source = str(project.get("source", "")).strip()
+                item_id = str(project.get("id", "")).strip()
+                cite = f"[{source}:{item_id}]" if source and item_id else ""
+                positioning = str(project.get("positioning", "") or project.get("summary", "")).strip()
+                project_line = f"  - {str(project.get('title', '')).strip()}"
+                if cite:
+                    project_line += f" {cite}"
+                if positioning:
+                    project_line += f"：{_truncate_text(positioning, 120)}"
+                lines.append(project_line)
+        risks = [str(item).strip() for item in (theme.get("risks_questions", []) or []) if str(item).strip()]
+        if risks:
+            lines.append("- 风险与观察：")
+            for risk in risks[:4]:
+                lines.append(f"  - {risk}")
+        watchlist = [str(item).strip() for item in (theme.get("next_week_watchlist", []) or []) if str(item).strip()]
+        if watchlist:
+            lines.append("- 下周观察：")
+            for item in watchlist[:4]:
+                lines.append(f"  - {item}")
+        lines.append("")
+
+    lines.append("## 项目榜单")
+    for board_label, board_key in [("Rise", "rising_top"), ("Hot", "hot_top"), ("Novel", "novel_top")]:
+        lines.append(f"### {board_label}")
+        for project in (project_boards.get(board_key, []) or [])[:5]:
+            source = str(project.get("source", "")).strip()
+            item_id = str(project.get("id", "")).strip()
+            cite = f"[{source}:{item_id}]" if source and item_id else ""
+            lines.append(f"- {str(project.get('title', '')).strip()} {cite}".rstrip())
+        lines.append("")
+
+    lines.append("## 关键词趋势")
+    for board_label, board_key in [("新增关键词", "emerging"), ("爆发关键词", "surging"), ("退潮关键词", "cooling")]:
+        lines.append(f"### {board_label}")
+        for item in (keyword_boards.get(board_key, []) or [])[:6]:
+            term = str(item.get("term") or item.get("keyword") or "").strip()
+            if term:
+                lines.append(f"- {term}")
+        lines.append("")
+
+    lines.append("## 交叉来源观察")
+    for item in cross_source_observations[:6]:
+        note = str(item.get("note", "")).strip()
+        if note:
+            lines.append(f"- {note}")
+    lines.append("")
+
+    lines.append("## 下周预测")
+    for theme in themes[:5]:
+        title = str(theme.get("theme_title", "")).strip()
+        watchlist = [str(item).strip() for item in (theme.get("next_week_watchlist", []) or []) if str(item).strip()]
+        if watchlist:
+            lines.append(f"- {title}：{watchlist[0]}")
+
+    return "\n".join(line for line in lines if line is not None).strip()
 
 
 def generate_theme_cards(clusters: list[dict[str, Any]], client: Any, chat_model: str) -> tuple[list[dict[str, Any]], set[str]]:
@@ -1297,14 +1546,55 @@ def compile_markdown_report(
         "cross_source_observations": cross_source_observations,
     }
     print("[weekly] 生成周报正文")
-    markdown, used_model = _chat_markdown(
-        client,
-        _report_messages(report_payload, week_start, week_end, report_depth),
-        chat_model,
-    )
+    primary_messages = _report_messages(report_payload, week_start, week_end, report_depth, prompt_level="standard")
+    print(f"[weekly] 正文证据载荷字符数: {len(primary_messages[-1]['content'])}")
+    markdown = ""
+    used_model = ""
+    try:
+        markdown, used_model = _chat_markdown(
+            client,
+            primary_messages,
+            chat_model,
+        )
+    except Exception as exc:
+        print(f"[weekly] 正文生成失败，改用压缩证据重试: {exc}")
+        retry_messages = _report_messages(report_payload, week_start, week_end, report_depth, prompt_level="minimal")
+        print(f"[weekly] 压缩后证据载荷字符数: {len(retry_messages[-1]['content'])}")
+        try:
+            markdown, used_model = _chat_markdown(
+                client,
+                retry_messages,
+                chat_model,
+            )
+        except Exception as retry_exc:
+            print(f"[weekly] 正文生成仍失败，使用结构化保底模板: {retry_exc}")
+            markdown = _fallback_markdown_from_structured(
+                themes,
+                project_boards,
+                keyword_boards,
+                cross_source_observations,
+                week_start,
+                week_end,
+            )
+            used_model = f"fallback:{chat_model}"
     print("[weekly] 执行周报审校")
-    critic_json, critic_model = _chat_json(client, _critic_messages(report_payload, markdown), chat_model)
-    models_used = {used_model, critic_model}
+    try:
+        critic_json, critic_model = _chat_json(client, _critic_messages(report_payload, markdown), chat_model)
+        models_used = {used_model, critic_model}
+    except Exception as exc:
+        print(f"[weekly] 审校失败，降级为未通过状态: {exc}")
+        critic_json = {
+            "pass": False,
+            "issues": [
+                {
+                    "type": "critic_generation_failed",
+                    "message": str(exc),
+                }
+            ],
+            "revised_summary": [],
+            "revised_paragraphs": {},
+        }
+        models_used = {used_model}
     if not bool(critic_json.get("pass", True)):
         revised_summary = critic_json.get("revised_summary")
         if isinstance(revised_summary, list) and revised_summary:
@@ -1343,6 +1633,7 @@ def build_weekly_payload(
             "k_selected": clustering.get("k_selected", 0),
             "embedding_model": embedding_model,
             "chat_model": ", ".join(sorted(set(chat_models_used))),
+            "theme_count": len(themes),
             "source_counts": {
                 source: int(count)
                 for source, count in week_events.groupby("source")["id"].count().to_dict().items()
