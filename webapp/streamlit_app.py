@@ -1013,373 +1013,376 @@ def build_masthead_html(active_view: str = "items", active_source: str = "", act
 </div>
 """
 
-st.set_page_config(page_title="Daily AI Feeds", layout="wide")
-st.markdown(STYLE, unsafe_allow_html=True)
-view_param = _qp_get_str("view", "items").lower().strip()
-if view_param not in {"items", "trends", "weekly"}:
-    view_param = "items"
-source_param = _qp_get_str("source", "").strip()
-column_param = _qp_get_str("column", "").strip().lower()
-sort_param = _qp_get_str("sort", "").strip()
-st.markdown(build_masthead_html(active_view=view_param, active_source=source_param, active_column=column_param), unsafe_allow_html=True)
 
-df = load_items(_structured_signature())
-if df.empty:
-    st.warning("暂无数据，请先生成 structured 数据。")
-    st.stop()
-df_all = df.copy()
-
-sort_labels = list(SORT_FIELD_OPTIONS.keys())
-sort_default = sort_param if sort_param in sort_labels else "趋势分"
-sort_index = sort_labels.index(sort_default) if sort_default in sort_labels else 0
-if view_param != "weekly":
-    sort_label = st.selectbox("关键词趋势排序", sort_labels, index=sort_index)
-else:
-    sort_label = sort_default
-sort_field = SORT_FIELD_OPTIONS[sort_label]
-
-if view_param == "weekly":
-    tab_weekly, tab_items, tab_trends = st.tabs(["周度研究", "内容浏览", "关键词趋势"])
-elif view_param == "trends":
-    tab_trends, tab_items, tab_weekly = st.tabs(["关键词趋势", "内容浏览", "周度研究"])
-else:
-    tab_items, tab_trends, tab_weekly = st.tabs(["内容浏览", "关键词趋势", "周度研究"])
-
-with tab_items:
-    trends = load_keyword_trends(_insights_signature())
-    item_comments = load_item_comments(_comments_signature())
-    t_keywords = (
-        sort_keywords_for_display(trends.get("keywords", []), sort_field=sort_field)
-        if trends
-        else []
-    )
-
-    left_col, right_col = st.columns([5, 1])
-
-    all_date_values = (
-        df_all["date"]
-        .dropna()
-        .astype(str)
-        .sort_values(ascending=False)
-        .unique()
-        .tolist()
-    )
-
-    with left_col:
-        sources = [""] + sorted(df["source"].dropna().unique().tolist())
-        source = source_param if source_param in sources else ""
-        columns = ["", "openclaw", "claudecode"]
-        column = column_param if column_param in columns else ""
-
-        col1, col2, col3 = st.columns([3, 2, 1])
-        with col1:
-            q = st.text_input("搜索标题 / 关键词 / 描述", "")
-        with col2:
-            date_pool_df = df_all
-            if source:
-                date_pool_df = date_pool_df[date_pool_df["source"].astype(str) == str(source)]
-            if column:
-                date_pool_df = filter_items(date_pool_df, source=None, q=None, column=column)
-
-            date_values = (
-                date_pool_df["date"]
-                .dropna()
-                .astype(str)
-                .sort_values(ascending=False)
-                .unique()
-                .tolist()
-            ) if not date_pool_df.empty else []
-            if not date_values:
-                date_values = all_date_values
-
-            date_state_key = f"date_choice_{source or 'all'}_{column or 'all'}"
-            if date_state_key not in st.session_state or st.session_state[date_state_key] not in date_values:
-                st.session_state[date_state_key] = date_values[0]
-
-            if column in {"openclaw", "claudecode"} and len(date_values) > 1:
-                nav_l, nav_c, nav_r = st.columns([1, 2, 1])
-                current_date = str(st.session_state[date_state_key])
-                current_idx = date_values.index(current_date) if current_date in date_values else 0
-
-                with nav_l:
-                    # Keep arrow buttons baseline-aligned with the date selectbox control.
-                    st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
-                    older_disabled = current_idx >= len(date_values) - 1
-                    if st.button("←", key=f"older_{date_state_key}", width="stretch", disabled=older_disabled):
-                        st.session_state[date_state_key] = date_values[current_idx + 1]
-
-                # 重新读取，确保按钮点击后本次渲染生效
-                current_date = str(st.session_state[date_state_key])
-                current_idx = date_values.index(current_date) if current_date in date_values else 0
-
-                with nav_c:
+def main():
+    st.set_page_config(page_title="Daily AI Feeds", layout="wide")
+    st.markdown(STYLE, unsafe_allow_html=True)
+    view_param = _qp_get_str("view", "items").lower().strip()
+    if view_param not in {"items", "trends", "weekly"}:
+        view_param = "items"
+    source_param = _qp_get_str("source", "").strip()
+    column_param = _qp_get_str("column", "").strip().lower()
+    sort_param = _qp_get_str("sort", "").strip()
+    st.markdown(build_masthead_html(active_view=view_param, active_source=source_param, active_column=column_param), unsafe_allow_html=True)
+    
+    df = load_items(_structured_signature())
+    if df.empty:
+        st.warning("暂无数据，请先生成 structured 数据。")
+        st.stop()
+    df_all = df.copy()
+    
+    sort_labels = list(SORT_FIELD_OPTIONS.keys())
+    sort_default = sort_param if sort_param in sort_labels else "趋势分"
+    sort_index = sort_labels.index(sort_default) if sort_default in sort_labels else 0
+    if view_param != "weekly":
+        sort_label = st.selectbox("关键词趋势排序", sort_labels, index=sort_index)
+    else:
+        sort_label = sort_default
+    sort_field = SORT_FIELD_OPTIONS[sort_label]
+    
+    if view_param == "weekly":
+        tab_weekly, tab_items, tab_trends = st.tabs(["周度研究", "内容浏览", "关键词趋势"])
+    elif view_param == "trends":
+        tab_trends, tab_items, tab_weekly = st.tabs(["关键词趋势", "内容浏览", "周度研究"])
+    else:
+        tab_items, tab_trends, tab_weekly = st.tabs(["内容浏览", "关键词趋势", "周度研究"])
+    
+    with tab_items:
+        trends = load_keyword_trends(_insights_signature())
+        item_comments = load_item_comments(_comments_signature())
+        t_keywords = (
+            sort_keywords_for_display(trends.get("keywords", []), sort_field=sort_field)
+            if trends
+            else []
+        )
+    
+        left_col, right_col = st.columns([5, 1])
+    
+        all_date_values = (
+            df_all["date"]
+            .dropna()
+            .astype(str)
+            .sort_values(ascending=False)
+            .unique()
+            .tolist()
+        )
+    
+        with left_col:
+            sources = [""] + sorted(df["source"].dropna().unique().tolist())
+            source = source_param if source_param in sources else ""
+            columns = ["", "openclaw", "claudecode"]
+            column = column_param if column_param in columns else ""
+    
+            col1, col2, col3 = st.columns([3, 2, 1])
+            with col1:
+                q = st.text_input("搜索标题 / 关键词 / 描述", "")
+            with col2:
+                date_pool_df = df_all
+                if source:
+                    date_pool_df = date_pool_df[date_pool_df["source"].astype(str) == str(source)]
+                if column:
+                    date_pool_df = filter_items(date_pool_df, source=None, q=None, column=column)
+    
+                date_values = (
+                    date_pool_df["date"]
+                    .dropna()
+                    .astype(str)
+                    .sort_values(ascending=False)
+                    .unique()
+                    .tolist()
+                ) if not date_pool_df.empty else []
+                if not date_values:
+                    date_values = all_date_values
+    
+                date_state_key = f"date_choice_{source or 'all'}_{column or 'all'}"
+                if date_state_key not in st.session_state or st.session_state[date_state_key] not in date_values:
+                    st.session_state[date_state_key] = date_values[0]
+    
+                if column in {"openclaw", "claudecode"} and len(date_values) > 1:
+                    nav_l, nav_c, nav_r = st.columns([1, 2, 1])
+                    current_date = str(st.session_state[date_state_key])
+                    current_idx = date_values.index(current_date) if current_date in date_values else 0
+    
+                    with nav_l:
+                        # Keep arrow buttons baseline-aligned with the date selectbox control.
+                        st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
+                        older_disabled = current_idx >= len(date_values) - 1
+                        if st.button("←", key=f"older_{date_state_key}", width="stretch", disabled=older_disabled):
+                            st.session_state[date_state_key] = date_values[current_idx + 1]
+    
+                    # 重新读取，确保按钮点击后本次渲染生效
+                    current_date = str(st.session_state[date_state_key])
+                    current_idx = date_values.index(current_date) if current_date in date_values else 0
+    
+                    with nav_c:
+                        date_choice = st.selectbox("日期", date_values, key=date_state_key)
+    
+                    with nav_r:
+                        st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
+                        newer_disabled = current_idx <= 0
+                        if st.button("→", key=f"newer_{date_state_key}", width="stretch", disabled=newer_disabled):
+                            st.session_state[date_state_key] = date_values[current_idx - 1]
+                else:
                     date_choice = st.selectbox("日期", date_values, key=date_state_key)
-
-                with nav_r:
-                    st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
-                    newer_disabled = current_idx <= 0
-                    if st.button("→", key=f"newer_{date_state_key}", width="stretch", disabled=newer_disabled):
-                        st.session_state[date_state_key] = date_values[current_idx - 1]
-            else:
-                date_choice = st.selectbox("日期", date_values, key=date_state_key)
-        with col3:
-            manage_mode = st.toggle("管理模式", value=False, key="items_manage_mode")
-
-        inline_authed = True
-        if manage_mode:
-            admin_password = _get_admin_password()
-            if admin_password:
-                inline_pwd = st.text_input("管理员密码", type="password", key="items_admin_password")
-                inline_authed = (inline_pwd == admin_password)
-                if not inline_authed:
-                    st.warning("管理模式已开启，请输入正确管理员密码后操作。")
-            else:
-                st.caption("未设置 ADMIN_PASSWORD（.env 或 st.secrets），当前环境默认允许管理操作。")
-
-        df_items = df_all
-        if date_choice:
-            df_items = df_items[df_items["date"].astype(str) == date_choice]
-
-        df_f = filter_items(df_items, source or None, q or None, column or None)
-        if not df_f.empty and "score" in df_f.columns:
-            df_f = df_f.copy()
-            df_f["score_total"] = df_f["score"].apply(
-                lambda s: (s or {}).get("total") if isinstance(s, dict) else None
-            )
-            df_f = df_f.sort_values(
-                by=["score_total", "rank"],
-                ascending=[False, True],
-                na_position="last",
-            )
-        st.caption(f"共 {len(df_f)} 条")
-
-        for _, row in df_f.iterrows():
-            row_dict = row.to_dict() if hasattr(row, "to_dict") else dict(row)
-            radar_svg = build_score_radar_svg(row_dict)
-            item_id = str(row_dict.get("id", ""))
-            comment_entries = item_comments.get(item_id, [])
-            st.markdown(
-                card_html(
-                    row_dict,
-                    radar_svg=radar_svg,
-                    comments=comment_entries,
-                ),
-                unsafe_allow_html=True,
-            )
+            with col3:
+                manage_mode = st.toggle("管理模式", value=False, key="items_manage_mode")
+    
+            inline_authed = True
             if manage_mode:
-                st.caption(f"管理ID: `{item_id}`")
-                with st.expander("编辑关键词 / 删除项目", expanded=False):
-                    current_kw = row_dict.get("keywords", []) if isinstance(row_dict.get("keywords"), list) else []
-                    kw_text = st.text_area(
-                        "关键词（每行一个，或逗号分隔）",
-                        value="\n".join(current_kw),
-                        height=120,
-                        key=f"inline_kw_{item_id}",
-                        disabled=not inline_authed,
-                    )
-                    parsed_kw = _parse_keyword_input(kw_text)
-                    st.caption(f"解析后关键词数: {len(parsed_kw)}")
-                    a1, a2, a3 = st.columns([1, 1, 2])
-                    with a1:
-                        if st.button("保存关键词", key=f"inline_save_kw_{item_id}", type="primary", disabled=not inline_authed):
-                            ok, msg = _update_item_keywords(item_id, parsed_kw)
-                            if ok:
-                                st.success(msg)
-                                st.cache_data.clear()
-                                st.rerun()
-                            else:
-                                st.error(msg)
-                    with a2:
-                        confirm_delete = st.checkbox("确认删除", key=f"inline_confirm_delete_{item_id}", disabled=not inline_authed)
-                        if st.button("删除项目", key=f"inline_delete_item_{item_id}", disabled=not inline_authed):
-                            if not confirm_delete:
-                                st.warning("请先勾选“确认删除”。")
-                            else:
-                                ok, msg = _delete_item_by_id(item_id)
+                admin_password = _get_admin_password()
+                if admin_password:
+                    inline_pwd = st.text_input("管理员密码", type="password", key="items_admin_password")
+                    inline_authed = (inline_pwd == admin_password)
+                    if not inline_authed:
+                        st.warning("管理模式已开启，请输入正确管理员密码后操作。")
+                else:
+                    st.caption("未设置 ADMIN_PASSWORD（.env 或 st.secrets），当前环境默认允许管理操作。")
+    
+            df_items = df_all
+            if date_choice:
+                df_items = df_items[df_items["date"].astype(str) == date_choice]
+    
+            df_f = filter_items(df_items, source or None, q or None, column or None)
+            if not df_f.empty and "score" in df_f.columns:
+                df_f = df_f.copy()
+                df_f["score_total"] = df_f["score"].apply(
+                    lambda s: (s or {}).get("total") if isinstance(s, dict) else None
+                )
+                df_f = df_f.sort_values(
+                    by=["score_total", "rank"],
+                    ascending=[False, True],
+                    na_position="last",
+                )
+            st.caption(f"共 {len(df_f)} 条")
+    
+            for _, row in df_f.iterrows():
+                row_dict = row.to_dict() if hasattr(row, "to_dict") else dict(row)
+                radar_svg = build_score_radar_svg(row_dict)
+                item_id = str(row_dict.get("id", ""))
+                comment_entries = item_comments.get(item_id, [])
+                st.markdown(
+                    card_html(
+                        row_dict,
+                        radar_svg=radar_svg,
+                        comments=comment_entries,
+                    ),
+                    unsafe_allow_html=True,
+                )
+                if manage_mode:
+                    st.caption(f"管理ID: `{item_id}`")
+                    with st.expander("编辑关键词 / 删除项目", expanded=False):
+                        current_kw = row_dict.get("keywords", []) if isinstance(row_dict.get("keywords"), list) else []
+                        kw_text = st.text_area(
+                            "关键词（每行一个，或逗号分隔）",
+                            value="\n".join(current_kw),
+                            height=120,
+                            key=f"inline_kw_{item_id}",
+                            disabled=not inline_authed,
+                        )
+                        parsed_kw = _parse_keyword_input(kw_text)
+                        st.caption(f"解析后关键词数: {len(parsed_kw)}")
+                        a1, a2, a3 = st.columns([1, 1, 2])
+                        with a1:
+                            if st.button("保存关键词", key=f"inline_save_kw_{item_id}", type="primary", disabled=not inline_authed):
+                                ok, msg = _update_item_keywords(item_id, parsed_kw)
                                 if ok:
                                     st.success(msg)
                                     st.cache_data.clear()
                                     st.rerun()
                                 else:
                                     st.error(msg)
-                with st.expander("项目评论", expanded=False):
-                    st.caption("评论仅按纯文本保存和展示，不渲染 Markdown / HTML。")
-                    if comment_entries:
-                        for idx, entry in enumerate(comment_entries, start=1):
-                            comment_id = str(entry.get("id", ""))
-                            entry_updated = str(entry.get("updated_at", "")).replace("T", " ")[:16]
-                            label = f"评论 #{idx}"
-                            if entry_updated:
-                                label = f"{label}（更新于 {entry_updated}）"
-                            with st.container():
-                                st.markdown(f"**{label}**")
-                                edit_text = st.text_area(
-                                    "编辑评论",
-                                    value=str(entry.get("comment", "")),
-                                    height=110,
-                                    key=f"inline_comment_{item_id}_{comment_id}",
-                                    disabled=not inline_authed,
-                                )
-                                c1, c2, c3 = st.columns([1, 1, 2])
-                                with c1:
-                                    if st.button("保存修改", key=f"inline_save_comment_{item_id}_{comment_id}", disabled=not inline_authed):
-                                        ok, msg = _save_item_comment(item_id, edit_text, comment_id=comment_id)
-                                        if ok:
-                                            st.success(msg)
-                                            st.cache_data.clear()
-                                            st.rerun()
-                                        else:
-                                            st.error(msg)
-                                with c2:
-                                    confirm_delete_comment = st.checkbox(
-                                        "确认删除",
-                                        key=f"inline_confirm_delete_comment_{item_id}_{comment_id}",
+                        with a2:
+                            confirm_delete = st.checkbox("确认删除", key=f"inline_confirm_delete_{item_id}", disabled=not inline_authed)
+                            if st.button("删除项目", key=f"inline_delete_item_{item_id}", disabled=not inline_authed):
+                                if not confirm_delete:
+                                    st.warning("请先勾选“确认删除”。")
+                                else:
+                                    ok, msg = _delete_item_by_id(item_id)
+                                    if ok:
+                                        st.success(msg)
+                                        st.cache_data.clear()
+                                        st.rerun()
+                                    else:
+                                        st.error(msg)
+                    with st.expander("项目评论", expanded=False):
+                        st.caption("评论仅按纯文本保存和展示，不渲染 Markdown / HTML。")
+                        if comment_entries:
+                            for idx, entry in enumerate(comment_entries, start=1):
+                                comment_id = str(entry.get("id", ""))
+                                entry_updated = str(entry.get("updated_at", "")).replace("T", " ")[:16]
+                                label = f"评论 #{idx}"
+                                if entry_updated:
+                                    label = f"{label}（更新于 {entry_updated}）"
+                                with st.container():
+                                    st.markdown(f"**{label}**")
+                                    edit_text = st.text_area(
+                                        "编辑评论",
+                                        value=str(entry.get("comment", "")),
+                                        height=110,
+                                        key=f"inline_comment_{item_id}_{comment_id}",
                                         disabled=not inline_authed,
                                     )
-                                    if st.button("删除评论", key=f"inline_delete_comment_{item_id}_{comment_id}", disabled=not inline_authed):
-                                        if not confirm_delete_comment:
-                                            st.warning("请先勾选“确认删除”。")
-                                        else:
-                                            ok, msg = _delete_item_comment(item_id, comment_id)
+                                    c1, c2, c3 = st.columns([1, 1, 2])
+                                    with c1:
+                                        if st.button("保存修改", key=f"inline_save_comment_{item_id}_{comment_id}", disabled=not inline_authed):
+                                            ok, msg = _save_item_comment(item_id, edit_text, comment_id=comment_id)
                                             if ok:
                                                 st.success(msg)
                                                 st.cache_data.clear()
                                                 st.rerun()
                                             else:
                                                 st.error(msg)
-                    else:
-                        st.caption("当前还没有评论。")
-
-                    new_comment_text = st.text_area(
-                        "新增评论",
-                        value="",
-                        height=120,
-                        key=f"inline_comment_new_{item_id}",
-                        disabled=not inline_authed,
-                        help="新增后会为该项目附加一条独立评论。",
-                    )
-                    if st.button("新增评论", key=f"inline_add_comment_{item_id}", disabled=not inline_authed):
-                        ok, msg = _save_item_comment(item_id, new_comment_text)
-                        if ok:
-                            st.success(msg)
-                            st.cache_data.clear()
-                            st.rerun()
+                                    with c2:
+                                        confirm_delete_comment = st.checkbox(
+                                            "确认删除",
+                                            key=f"inline_confirm_delete_comment_{item_id}_{comment_id}",
+                                            disabled=not inline_authed,
+                                        )
+                                        if st.button("删除评论", key=f"inline_delete_comment_{item_id}_{comment_id}", disabled=not inline_authed):
+                                            if not confirm_delete_comment:
+                                                st.warning("请先勾选“确认删除”。")
+                                            else:
+                                                ok, msg = _delete_item_comment(item_id, comment_id)
+                                                if ok:
+                                                    st.success(msg)
+                                                    st.cache_data.clear()
+                                                    st.rerun()
+                                                else:
+                                                    st.error(msg)
                         else:
-                            st.error(msg)
-
-    with right_col:
-        if t_keywords:
-            t_scores = [_to_float(k.get(sort_field), 0.0) for k in t_keywords]
-            t_min = min(t_scores) if t_scores else 0.0
-            t_max = max(t_scores) if t_scores else 1.0
-            t_span = t_max - t_min if t_max != t_min else 1.0
-            st.markdown(f"**关键词趋势排行（按{sort_label}）**")
-            top_sidebar = t_keywords[:6]
-            for idx, k in enumerate(top_sidebar, start=1):
-                score = _to_float(k.get(sort_field), 0.0)
-                ns = (score - t_min) / t_span
-                color = _score_color(ns)
-                kw = str(k.get("keyword", ""))
-                trend_text, trend_color, trend_z = trend_state(k)
+                            st.caption("当前还没有评论。")
+    
+                        new_comment_text = st.text_area(
+                            "新增评论",
+                            value="",
+                            height=120,
+                            key=f"inline_comment_new_{item_id}",
+                            disabled=not inline_authed,
+                            help="新增后会为该项目附加一条独立评论。",
+                        )
+                        if st.button("新增评论", key=f"inline_add_comment_{item_id}", disabled=not inline_authed):
+                            ok, msg = _save_item_comment(item_id, new_comment_text)
+                            if ok:
+                                st.success(msg)
+                                st.cache_data.clear()
+                                st.rerun()
+                            else:
+                                st.error(msg)
+    
+        with right_col:
+            if t_keywords:
+                t_scores = [_to_float(k.get(sort_field), 0.0) for k in t_keywords]
+                t_min = min(t_scores) if t_scores else 0.0
+                t_max = max(t_scores) if t_scores else 1.0
+                t_span = t_max - t_min if t_max != t_min else 1.0
+                st.markdown(f"**关键词趋势排行（按{sort_label}）**")
+                top_sidebar = t_keywords[:6]
+                for idx, k in enumerate(top_sidebar, start=1):
+                    score = _to_float(k.get(sort_field), 0.0)
+                    ns = (score - t_min) / t_span
+                    color = _score_color(ns)
+                    kw = str(k.get("keyword", ""))
+                    trend_text, trend_color, trend_z = trend_state(k)
+                    st.markdown(
+                        f"<div style='display:flex;align-items:center;gap:8px;'>"
+                        f"<span style='font-weight:700;color:#2b2823;'>{idx}.</span>"
+                        f"<span style='font-weight:600;color:#2b2823;'>{escape(kw)}</span>"
+                        f"<span style='font-size:12px;color:{trend_color};font-weight:600;'>{trend_text}</span>"
+                        f"<span style='margin-left:auto;color:{color};font-weight:700;'>"
+                        f"{score:.2f}</span></div>"
+                        f"<div style='font-size:11px;color:#6e6658;margin:2px 0 4px 24px;'>z={trend_z:.2f}</div>",
+                        unsafe_allow_html=True,
+                    )
+                    series_df = pd.DataFrame(k.get("series", []))
+                    if not series_df.empty:
+                        series_df["norm_score"] = max(0.0, min(1.0, ns))
+                        series_df["date"] = pd.to_datetime(series_df["date"])
+                        series_df = series_df.sort_values("date").tail(7)
+                        y_field = _trend_series_y_field(series_df)
+                        mini_base = alt.Chart(series_df).encode(
+                            x=alt.X("date:T", axis=alt.Axis(labels=False, ticks=False, title=None)),
+                            y=alt.Y(f"{y_field}:Q", axis=alt.Axis(labels=False, ticks=False, title=None)),
+                            color=alt.Color(
+                                "norm_score:Q",
+                                scale=alt.Scale(domain=[0, 1], range=["#0f9d58", "#ef4444"]),
+                                legend=None,
+                            ),
+                        )
+                        mini_area = mini_base.mark_area(interpolate="monotone", opacity=0.2)
+                        mini_line = mini_base.mark_line(interpolate="monotone")
+                        mini_points = mini_base.mark_point(filled=False, size=40, strokeWidth=1.5)
+                        mini_chart = (
+                            alt.layer(mini_area, mini_line, mini_points)
+                            .properties(height=70)
+                            .configure(background="transparent")
+                            .configure_view(fill="#fffdf8", stroke="rgba(70,58,39,0.18)")
+                        )
+                        st.altair_chart(mini_chart, use_container_width=True)
+            else:
+                st.caption("暂无趋势数据")
+    
+    with tab_trends:
+        trends = load_keyword_trends(_insights_signature())
+        keywords = sort_keywords_for_display(trends.get("keywords", []), sort_field=sort_field)
+        dates = trends.get("dates", [])
+        if not keywords:
+            st.warning("暂无趋势数据，请先运行：python scripts/keyword_trends.py")
+        else:
+            col_a, col_b = st.columns([1, 2])
+            with col_a:
+                top_n = st.slider("显示关键词数量", 5, 50, 20, 1, key="trend_topn")
+            with col_b:
+                if dates:
+                    st.caption(f"趋势统计区间：{dates[0]} ~ {dates[-1]}")
+    
+            scores = [float(k.get("score", 0.0)) for k in keywords]
+            score_min = min(scores) if scores else 0.0
+            score_max = max(scores) if scores else 1.0
+            score_span = score_max - score_min if score_max != score_min else 1.0
+    
+            for i, item in enumerate(keywords[:top_n], start=1):
+                trend_text, _, _ = trend_state(item)
+                sort_value = _to_float(item.get(sort_field), 0.0)
                 st.markdown(
-                    f"<div style='display:flex;align-items:center;gap:8px;'>"
-                    f"<span style='font-weight:700;color:#2b2823;'>{idx}.</span>"
-                    f"<span style='font-weight:600;color:#2b2823;'>{escape(kw)}</span>"
-                    f"<span style='font-size:12px;color:{trend_color};font-weight:600;'>{trend_text}</span>"
-                    f"<span style='margin-left:auto;color:{color};font-weight:700;'>"
-                    f"{score:.2f}</span></div>"
-                    f"<div style='font-size:11px;color:#6e6658;margin:2px 0 4px 24px;'>z={trend_z:.2f}</div>",
-                    unsafe_allow_html=True,
+                    f"**{i}. {item['keyword']}**  "
+                    f"(排序值 `{sort_label}={sort_value:.4f}` / 趋势分 `{item['score']:.4f}` / 基础占比 `{item.get('tfidf', item['growth']):.4f}` / z-score `{item.get('z_score', item['acceleration']):.4f}` / 趋势 `{trend_text}` / total `{item['total']}`)"
                 )
-                series_df = pd.DataFrame(k.get("series", []))
+                series_df = pd.DataFrame(item["series"])
                 if not series_df.empty:
-                    series_df["norm_score"] = max(0.0, min(1.0, ns))
+                    norm_score = (float(item.get("score", 0.0)) - score_min) / score_span
+                    norm_score = max(0.0, min(1.0, norm_score))
+                    series_df["norm_score"] = norm_score
+                    series_df["score"] = item["score"]
                     series_df["date"] = pd.to_datetime(series_df["date"])
                     series_df = series_df.sort_values("date").tail(7)
                     y_field = _trend_series_y_field(series_df)
-                    mini_base = alt.Chart(series_df).encode(
-                        x=alt.X("date:T", axis=alt.Axis(labels=False, ticks=False, title=None)),
-                        y=alt.Y(f"{y_field}:Q", axis=alt.Axis(labels=False, ticks=False, title=None)),
+                    base = alt.Chart(series_df).encode(
+                        x=alt.X("date:T", title="", axis=alt.Axis(labelAngle=0, format="%m-%d")),
+                        y=alt.Y(f"{y_field}:Q", title=""),
                         color=alt.Color(
                             "norm_score:Q",
                             scale=alt.Scale(domain=[0, 1], range=["#0f9d58", "#ef4444"]),
                             legend=None,
                         ),
                     )
-                    mini_area = mini_base.mark_area(interpolate="monotone", opacity=0.2)
-                    mini_line = mini_base.mark_line(interpolate="monotone")
-                    mini_points = mini_base.mark_point(filled=False, size=40, strokeWidth=1.5)
-                    mini_chart = (
-                        alt.layer(mini_area, mini_line, mini_points)
-                        .properties(height=70)
+                    area = base.mark_area(interpolate="monotone", opacity=0.18)
+                    line = base.mark_line(interpolate="monotone")
+                    points = base.mark_point(filled=False, size=70, strokeWidth=2)
+                    chart = (
+                        alt.layer(area, line, points)
+                        .properties(height=160)
                         .configure(background="transparent")
                         .configure_view(fill="#fffdf8", stroke="rgba(70,58,39,0.18)")
+                        .configure_axis(
+                            labelColor="#6e6658",
+                            titleColor="#6e6658",
+                            domainColor="rgba(70,58,39,0.28)",
+                            gridColor="rgba(70,58,39,0.12)",
+                            tickColor="rgba(70,58,39,0.28)",
+                        )
                     )
-                    st.altair_chart(mini_chart, use_container_width=True)
-        else:
-            st.caption("暂无趋势数据")
-
-with tab_trends:
-    trends = load_keyword_trends(_insights_signature())
-    keywords = sort_keywords_for_display(trends.get("keywords", []), sort_field=sort_field)
-    dates = trends.get("dates", [])
-    if not keywords:
-        st.warning("暂无趋势数据，请先运行：python scripts/keyword_trends.py")
-    else:
-        col_a, col_b = st.columns([1, 2])
-        with col_a:
-            top_n = st.slider("显示关键词数量", 5, 50, 20, 1, key="trend_topn")
-        with col_b:
-            if dates:
-                st.caption(f"趋势统计区间：{dates[0]} ~ {dates[-1]}")
-
-        scores = [float(k.get("score", 0.0)) for k in keywords]
-        score_min = min(scores) if scores else 0.0
-        score_max = max(scores) if scores else 1.0
-        score_span = score_max - score_min if score_max != score_min else 1.0
-
-        for i, item in enumerate(keywords[:top_n], start=1):
-            trend_text, _, _ = trend_state(item)
-            sort_value = _to_float(item.get(sort_field), 0.0)
-            st.markdown(
-                f"**{i}. {item['keyword']}**  "
-                f"(排序值 `{sort_label}={sort_value:.4f}` / 趋势分 `{item['score']:.4f}` / 基础占比 `{item.get('tfidf', item['growth']):.4f}` / z-score `{item.get('z_score', item['acceleration']):.4f}` / 趋势 `{trend_text}` / total `{item['total']}`)"
-            )
-            series_df = pd.DataFrame(item["series"])
-            if not series_df.empty:
-                norm_score = (float(item.get("score", 0.0)) - score_min) / score_span
-                norm_score = max(0.0, min(1.0, norm_score))
-                series_df["norm_score"] = norm_score
-                series_df["score"] = item["score"]
-                series_df["date"] = pd.to_datetime(series_df["date"])
-                series_df = series_df.sort_values("date").tail(7)
-                y_field = _trend_series_y_field(series_df)
-                base = alt.Chart(series_df).encode(
-                    x=alt.X("date:T", title="", axis=alt.Axis(labelAngle=0, format="%m-%d")),
-                    y=alt.Y(f"{y_field}:Q", title=""),
-                    color=alt.Color(
-                        "norm_score:Q",
-                        scale=alt.Scale(domain=[0, 1], range=["#0f9d58", "#ef4444"]),
-                        legend=None,
-                    ),
-                )
-                area = base.mark_area(interpolate="monotone", opacity=0.18)
-                line = base.mark_line(interpolate="monotone")
-                points = base.mark_point(filled=False, size=70, strokeWidth=2)
-                chart = (
-                    alt.layer(area, line, points)
-                    .properties(height=160)
-                    .configure(background="transparent")
-                    .configure_view(fill="#fffdf8", stroke="rgba(70,58,39,0.18)")
-                    .configure_axis(
-                        labelColor="#6e6658",
-                        titleColor="#6e6658",
-                        domainColor="rgba(70,58,39,0.28)",
-                        gridColor="rgba(70,58,39,0.12)",
-                        tickColor="rgba(70,58,39,0.28)",
-                    )
-                )
-                st.altair_chart(chart, use_container_width=True)
-
-with tab_weekly:
-    render_weekly_report_view(BASE_DIR)
+                    st.altair_chart(chart, use_container_width=True)
+    
+    with tab_weekly:
+        render_weekly_report_view(BASE_DIR)
+    
