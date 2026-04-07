@@ -53,17 +53,18 @@
     "2026-04-03",
     "2026-04-04",
     "2026-04-05",
-    "2026-04-06"
+    "2026-04-06",
+    "2026-04-07"
   ],
   "keywords": [
     {
       "keyword": "开发者工具",
       "canonical": "开发者工具",
-      "score": 0.0188,
+      "score": 0.0189,
       "growth": 0.0044,
-      "acceleration": 3.239,
+      "acceleration": 3.2723,
       "tfidf": 0.0044,
-      "z_score": 3.239,
+      "z_score": 3.2723,
       "idf": 1.0,
       "recent_freq": 0.0044,
       "recent_share": 0.0044,
@@ -396,360 +397,23 @@
           "count": 0,
           "weighted_count": 0.0,
           "share": 0.0
-        }
-      ]
-    },
-    {
-      "keyword": "工作流编排",
-      "canonical": "工作流编排",
-      "score": 0.0137,
-      "growth": 0.0032,
-      "acceleration": 3.2317,
-      "tfidf": 0.0032,
-      "z_score": 3.2317,
-      "idf": 1.0,
-      "recent_freq": 0.0032,
-      "recent_share": 0.0032,
-      "total": 21,
-      "weighted_total": 0.0353,
-      "weighted_total_raw": 21.0,
-      "active_days": 17,
-      "recent_days": 3,
-      "series": [
+        },
         {
-          "date": "2026-02-02",
+          "date": "2026-04-07",
           "count": 0,
           "weighted_count": 0.0,
           "share": 0.0
-        },
-        {
-          "date": "2026-02-03",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-04",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-05",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-06",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-07",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-08",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-09",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-10",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-11",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-12",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001754
-        },
-        {
-          "date": "2026-02-13",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-14",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-15",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-16",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-17",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.00189
-        },
-        {
-          "date": "2026-02-18",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-19",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-20",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-21",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-22",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-23",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-24",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-25",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.002165
-        },
-        {
-          "date": "2026-02-26",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-27",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-02-28",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001163
-        },
-        {
-          "date": "2026-03-01",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-02",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-03",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001458
-        },
-        {
-          "date": "2026-03-04",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-05",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-06",
-          "count": 2,
-          "weighted_count": 2.0,
-          "share": 0.002367
-        },
-        {
-          "date": "2026-03-07",
-          "count": 2,
-          "weighted_count": 2.0,
-          "share": 0.00232
-        },
-        {
-          "date": "2026-03-08",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001792
-        },
-        {
-          "date": "2026-03-09",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001721
-        },
-        {
-          "date": "2026-03-10",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-11",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.002299
-        },
-        {
-          "date": "2026-03-12",
-          "count": 2,
-          "weighted_count": 2.0,
-          "share": 0.002247
-        },
-        {
-          "date": "2026-03-13",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001109
-        },
-        {
-          "date": "2026-03-20",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-21",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-22",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-24",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-25",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-26",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-27",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-30",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-03-31",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001605
-        },
-        {
-          "date": "2026-04-01",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.001757
-        },
-        {
-          "date": "2026-04-03",
-          "count": 0,
-          "weighted_count": 0.0,
-          "share": 0.0
-        },
-        {
-          "date": "2026-04-04",
-          "count": 2,
-          "weighted_count": 2.0,
-          "share": 0.003442
-        },
-        {
-          "date": "2026-04-05",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.003322
-        },
-        {
-          "date": "2026-04-06",
-          "count": 1,
-          "weighted_count": 1.0,
-          "share": 0.002924
         }
       ]
     },
     {
       "keyword": "浏览器自动化",
       "canonical": "浏览器自动化",
-      "score": 0.0075,
+      "score": 0.0076,
       "growth": 0.0032,
-      "acceleration": 1.3514,
+      "acceleration": 1.3716,
       "tfidf": 0.0032,
-      "z_score": 1.3514,
+      "z_score": 1.3716,
       "idf": 1.0,
       "recent_freq": 0.0032,
       "recent_share": 0.0032,
@@ -1082,24 +746,30 @@
           "count": 1,
           "weighted_count": 1.0,
           "share": 0.002924
+        },
+        {
+          "date": "2026-04-07",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
         }
       ]
     },
     {
       "keyword": "命令行工具",
       "canonical": "命令行工具",
-      "score": 0.0057,
+      "score": 0.0056,
       "growth": 0.0036,
-      "acceleration": 0.5605,
+      "acceleration": 0.56,
       "tfidf": 0.0036,
-      "z_score": 0.5605,
+      "z_score": 0.56,
       "idf": 1.0,
       "recent_freq": 0.0036,
       "recent_share": 0.0036,
-      "total": 42,
-      "weighted_total": 0.0882,
-      "weighted_total_raw": 42.0,
-      "active_days": 21,
+      "total": 43,
+      "weighted_total": 0.0899,
+      "weighted_total_raw": 43.0,
+      "active_days": 22,
       "recent_days": 3,
       "series": [
         {
@@ -1425,6 +1095,361 @@
           "count": 2,
           "weighted_count": 2.0,
           "share": 0.005848
+        },
+        {
+          "date": "2026-04-07",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001667
+        }
+      ]
+    },
+    {
+      "keyword": "agent",
+      "canonical": "agent",
+      "score": 0.0032,
+      "growth": 0.0032,
+      "acceleration": -0.323,
+      "tfidf": 0.0032,
+      "z_score": -0.323,
+      "idf": 1.0,
+      "recent_freq": 0.0032,
+      "recent_share": 0.0032,
+      "total": 179,
+      "weighted_total": 0.3396,
+      "weighted_total_raw": 179.0,
+      "active_days": 37,
+      "recent_days": 3,
+      "series": [
+        {
+          "date": "2026-02-02",
+          "count": 3,
+          "weighted_count": 3.0,
+          "share": 0.009615
+        },
+        {
+          "date": "2026-02-03",
+          "count": 16,
+          "weighted_count": 16.0,
+          "share": 0.025478
+        },
+        {
+          "date": "2026-02-04",
+          "count": 18,
+          "weighted_count": 18.0,
+          "share": 0.028302
+        },
+        {
+          "date": "2026-02-05",
+          "count": 15,
+          "weighted_count": 15.0,
+          "share": 0.025042
+        },
+        {
+          "date": "2026-02-06",
+          "count": 13,
+          "weighted_count": 13.0,
+          "share": 0.022688
+        },
+        {
+          "date": "2026-02-07",
+          "count": 11,
+          "weighted_count": 11.0,
+          "share": 0.02037
+        },
+        {
+          "date": "2026-02-08",
+          "count": 16,
+          "weighted_count": 16.0,
+          "share": 0.029685
+        },
+        {
+          "date": "2026-02-09",
+          "count": 17,
+          "weighted_count": 17.0,
+          "share": 0.028428
+        },
+        {
+          "date": "2026-02-10",
+          "count": 10,
+          "weighted_count": 10.0,
+          "share": 0.017331
+        },
+        {
+          "date": "2026-02-11",
+          "count": 16,
+          "weighted_count": 16.0,
+          "share": 0.031746
+        },
+        {
+          "date": "2026-02-12",
+          "count": 7,
+          "weighted_count": 7.0,
+          "share": 0.012281
+        },
+        {
+          "date": "2026-02-13",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.003448
+        },
+        {
+          "date": "2026-02-14",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.002577
+        },
+        {
+          "date": "2026-02-15",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.002577
+        },
+        {
+          "date": "2026-02-16",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.00409
+        },
+        {
+          "date": "2026-02-17",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-18",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-19",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-20",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.005405
+        },
+        {
+          "date": "2026-02-21",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-22",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-23",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-24",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-25",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-26",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-02-27",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.002123
+        },
+        {
+          "date": "2026-02-28",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-01",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-02",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.002137
+        },
+        {
+          "date": "2026-03-03",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-04",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.002345
+        },
+        {
+          "date": "2026-03-05",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001135
+        },
+        {
+          "date": "2026-03-06",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-07",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.00116
+        },
+        {
+          "date": "2026-03-08",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001792
+        },
+        {
+          "date": "2026-03-09",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001721
+        },
+        {
+          "date": "2026-03-10",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001144
+        },
+        {
+          "date": "2026-03-11",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.002299
+        },
+        {
+          "date": "2026-03-12",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001124
+        },
+        {
+          "date": "2026-03-13",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.002217
+        },
+        {
+          "date": "2026-03-20",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-21",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001658
+        },
+        {
+          "date": "2026-03-22",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-24",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.002999
+        },
+        {
+          "date": "2026-03-25",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.002985
+        },
+        {
+          "date": "2026-03-26",
+          "count": 3,
+          "weighted_count": 3.0,
+          "share": 0.005445
+        },
+        {
+          "date": "2026-03-27",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-03-30",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.025316
+        },
+        {
+          "date": "2026-03-31",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001605
+        },
+        {
+          "date": "2026-04-01",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.001757
+        },
+        {
+          "date": "2026-04-03",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-04-04",
+          "count": 0,
+          "weighted_count": 0.0,
+          "share": 0.0
+        },
+        {
+          "date": "2026-04-05",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.003322
+        },
+        {
+          "date": "2026-04-06",
+          "count": 1,
+          "weighted_count": 1.0,
+          "share": 0.002924
+        },
+        {
+          "date": "2026-04-07",
+          "count": 2,
+          "weighted_count": 2.0,
+          "share": 0.003333
         }
       ]
     }
