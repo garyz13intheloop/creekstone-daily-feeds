@@ -1107,7 +1107,7 @@ def main():
                         # Keep arrow buttons baseline-aligned with the date selectbox control.
                         st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
                         older_disabled = current_idx >= len(date_values) - 1
-                        if st.button("←", key=f"older_{date_state_key}", width="stretch", disabled=older_disabled):
+                        if st.button("←", key=f"older_{date_state_key}", use_container_width=True, disabled=older_disabled):
                             st.session_state[date_state_key] = date_values[current_idx + 1]
     
                     # 重新读取，确保按钮点击后本次渲染生效
@@ -1120,7 +1120,7 @@ def main():
                     with nav_r:
                         st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
                         newer_disabled = current_idx <= 0
-                        if st.button("→", key=f"newer_{date_state_key}", width="stretch", disabled=newer_disabled):
+                        if st.button("→", key=f"newer_{date_state_key}", use_container_width=True, disabled=newer_disabled):
                             st.session_state[date_state_key] = date_values[current_idx - 1]
                 else:
                     date_choice = st.selectbox("日期", date_values, key=date_state_key)
