@@ -161,7 +161,7 @@ def render_weekly_report_view(base_dir: Path) -> None:
                     tickColor="rgba(70,58,39,0.28)",
                 )
             )
-            st.altair_chart(chart, width="stretch")
+            st.altair_chart(chart, use_container_width=True)
 
             diag_cols = st.columns([1, 1])
             with diag_cols[0]:

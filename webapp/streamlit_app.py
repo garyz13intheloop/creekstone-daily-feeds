@@ -1315,7 +1315,7 @@ with tab_items:
                         .configure(background="transparent")
                         .configure_view(fill="#fffdf8", stroke="rgba(70,58,39,0.18)")
                     )
-                    st.altair_chart(mini_chart, width="stretch")
+                    st.altair_chart(mini_chart, use_container_width=True)
         else:
             st.caption("暂无趋势数据")
 
@@ -1379,7 +1379,7 @@ with tab_trends:
                         tickColor="rgba(70,58,39,0.28)",
                     )
                 )
-                st.altair_chart(chart, width="stretch")
+                st.altair_chart(chart, use_container_width=True)
 
 with tab_weekly:
     render_weekly_report_view(BASE_DIR)
