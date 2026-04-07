@@ -362,13 +362,25 @@ def _match_column(row: dict, column: str) -> bool:
     col = (column or "").strip().lower()
     if not col:
         return True
+    def _to_str_list(val) -> list:
+        if val is None:
+            return []
+        if hasattr(val, "tolist"):
+            try:
+                val = val.tolist()
+            except Exception:
+                return []
+        if isinstance(val, (list, tuple)):
+            return [str(v) for v in val]
+        return []
+
     text = " ".join(
         [
             str(row.get("title", "")),
             str(row.get("description_zh", "")),
             str(row.get("description_en", "")),
-            " ".join(row.get("keywords", []) or []),
-            " ".join(row.get("tags", []) or []),
+            " ".join(_to_str_list(row.get("keywords"))),
+            " ".join(_to_str_list(row.get("tags"))),
         ]
     ).lower()
     if col == "openclaw":
@@ -392,11 +404,17 @@ def filter_items(df: pd.DataFrame, source: Optional[str], q: Optional[str], colu
     if q:
         ql = q.lower()
         def m(row):
+            kw_val = row.get("keywords", [])
+            if hasattr(kw_val, "tolist"):
+                try:
+                    kw_val = kw_val.tolist()
+                except Exception:
+                    kw_val = []
             text = " ".join([
                 str(row.get("title", "")),
                 str(row.get("description_zh", "")),
                 str(row.get("description_en", "")),
-                " ".join(row.get("keywords", [])),
+                " ".join(kw_val if isinstance(kw_val, (list, tuple)) else []),
             ]).lower()
             return ql in text
         df = df[df.apply(m, axis=1)]
@@ -478,11 +496,25 @@ def _format_reason_html(score_obj: Optional[dict]) -> str:
     return f"<div class='reason'><span class='reason-neutral'>{escape(text)}</span></div>"
 
 
+def _safe_list_field(val) -> list:
+    """Convert a field value (possibly numpy.ndarray) to a plain Python list."""
+    if val is None:
+        return []
+    if hasattr(val, "tolist"):
+        try:
+            return list(val.tolist())
+        except Exception:
+            return []
+    if isinstance(val, (list, tuple)):
+        return list(val)
+    return []
+
+
 def card_html(item, radar_svg: Optional[str] = None, comments: Optional[list[dict]] = None):
     title = escape(item.get("title", ""))
     url = item.get("url", "#")
     desc = escape(item.get("description_zh") or item.get("description_en") or "")
-    kws = item.get("keywords") or []
+    kws = _safe_list_field(item.get("keywords"))
 
     cleaned = []
     for k in kws:
@@ -1073,7 +1105,7 @@ with tab_items:
                     # Keep arrow buttons baseline-aligned with the date selectbox control.
                     st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
                     older_disabled = current_idx >= len(date_values) - 1
-                    if st.button("←", key=f"older_{date_state_key}", use_container_width=True, disabled=older_disabled):
+                    if st.button("←", key=f"older_{date_state_key}", width="stretch", disabled=older_disabled):
                         st.session_state[date_state_key] = date_values[current_idx + 1]
 
                 # 重新读取，确保按钮点击后本次渲染生效
@@ -1086,7 +1118,7 @@ with tab_items:
                 with nav_r:
                     st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
                     newer_disabled = current_idx <= 0
-                    if st.button("→", key=f"newer_{date_state_key}", use_container_width=True, disabled=newer_disabled):
+                    if st.button("→", key=f"newer_{date_state_key}", width="stretch", disabled=newer_disabled):
                         st.session_state[date_state_key] = date_values[current_idx - 1]
             else:
                 date_choice = st.selectbox("日期", date_values, key=date_state_key)
@@ -1283,7 +1315,7 @@ with tab_items:
                         .configure(background="transparent")
                         .configure_view(fill="#fffdf8", stroke="rgba(70,58,39,0.18)")
                     )
-                    st.altair_chart(mini_chart, use_container_width=True)
+                    st.altair_chart(mini_chart, width="stretch")
         else:
             st.caption("暂无趋势数据")
 
@@ -1347,7 +1379,7 @@ with tab_trends:
                         tickColor="rgba(70,58,39,0.28)",
                     )
                 )
-                st.altair_chart(chart, use_container_width=True)
+                st.altair_chart(chart, width="stretch")
 
 with tab_weekly:
     render_weekly_report_view(BASE_DIR)

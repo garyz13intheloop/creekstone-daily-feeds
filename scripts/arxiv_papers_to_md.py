@@ -445,7 +445,18 @@ def fetch_arxiv_papers(
             }
             response = None
             for attempt in range(1, 6):
-                response = session.get(base_url, params=params, timeout=30)
+                try:
+                    response = session.get(base_url, params=params, timeout=90)
+                except Exception as net_exc:
+                    wait_net = min(30.0, 3.0 * (2 ** (attempt - 1)))
+                    print(
+                        f"arXiv 网络请求失败（第 {attempt}/5 次）: {net_exc}，"
+                        f"等待 {wait_net:.1f}s 后重试..."
+                    )
+                    if attempt < 5:
+                        time.sleep(wait_net)
+                        continue
+                    raise
                 if response.status_code == 429:
                     wait_seconds = min(30.0, 1.5 * (2 ** (attempt - 1)))
                     print(

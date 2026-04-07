@@ -80,7 +80,17 @@ jobs:
           CMD="$CMD --force"
         fi
         echo "$CMD"
-        eval "$CMD"
+        # Retry up to 3 times on transient failures (e.g. 429 rate limit)
+        for i in 1 2 3; do
+          eval "$CMD" && break
+          EXIT_CODE=$?
+          echo "Attempt $i failed (exit $EXIT_CODE). Waiting 60s before retry..."
+          sleep 60
+          if [ $i -eq 3 ]; then
+            echo "All 3 attempts failed."
+            exit $EXIT_CODE
+          fi
+        done
 
     - name: Validate outputs
       run: |

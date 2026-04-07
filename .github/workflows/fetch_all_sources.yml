@@ -150,6 +150,7 @@ jobs:
 
     - name: Fetch arXiv Papers
       if: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.force_run == 'true') || steps.precheck.outputs.skip_arxiv != 'true' }}
+      continue-on-error: true
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || vars.OPENAI_API_KEY }}
         OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL || vars.OPENAI_BASE_URL }}
@@ -224,13 +225,18 @@ jobs:
 
         has_openai = os.getenv("HAS_OPENAI", "false").lower() == "true"
         errors = []
+        warnings = []
         for source, date_str in targets.items():
             if str(skip_flags.get(source, "false")).lower() == "true":
                 print(f"post-check skip: {source} ({date_str})")
                 continue
             parquet_path = Path("data/structured") / f"{date_str}.parquet"
             if not parquet_path.exists():
-                errors.append(f"{source} {date_str}: parquet missing")
+                # arXiv 网络超时属于软失败，不阻断整个 workflow
+                if source == "arxiv":
+                    warnings.append(f"WARN: {source} {date_str}: parquet missing (network timeout?), skipping")
+                else:
+                    errors.append(f"{source} {date_str}: parquet missing")
                 continue
             try:
                 df = pd.read_parquet(parquet_path)
@@ -252,14 +258,21 @@ jobs:
                         if "> 共 0 个 skills" in md_text:
                             print(f"post-check accept: clawhub {date_str} has 0 skills")
                             continue
-                errors.append(f"{source} {date_str}: no rows")
+                # arXiv 空数据也是软失败
+                if source == "arxiv":
+                    warnings.append(f"WARN: {source} {date_str}: no rows (possible timeout)")
+                else:
+                    errors.append(f"{source} {date_str}: no rows")
                 continue
             if "score" not in src_df.columns:
                 errors.append(f"{source} {date_str}: score column missing")
                 continue
             if has_openai and not src_df["score"].apply(score_total).gt(0).any():
-                errors.append(f"{source} {date_str}: all scores are 0")
+                # 429 rate limit 导致评分全0，降级为 warning
+                warnings.append(f"WARN: {source} {date_str}: all scores are 0 (possible OpenAI rate limit)")
 
+        for w in warnings:
+            print(w)
         if errors:
             print("Post-check failed:")
             for err in errors:
