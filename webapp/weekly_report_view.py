@@ -63,7 +63,7 @@ def render_weekly_report_view(base_dir: Path) -> None:
         selected = st.selectbox("周报周次", choice_options, key="weekly_report_choice")
     with top_right:
         st.markdown("<div style='height: 2.05rem;'></div>", unsafe_allow_html=True)
-        if st.button("加载最新周", key="weekly_report_latest", width="stretch"):
+        if st.button("加载最新周", key="weekly_report_latest", use_container_width=True):
             if options:
                 st.session_state["weekly_report_pending_latest"] = True
                 st.rerun()
