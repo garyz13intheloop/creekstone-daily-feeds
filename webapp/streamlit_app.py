@@ -50,6 +50,49 @@ def _comments_signature() -> str:
 
 @st.cache_data
 def load_items(_signature: str) -> pd.DataFrame:
+    # Prefer items.ndjson as the single source of truth when it exists and is
+    # non-empty — it is always kept in sync by the pipeline and avoids reading
+    # every individual parquet file (which doubles peak memory on Cloud).
+    nd = STRUCTURED_DIR / "items.ndjson"
+    if nd.exists() and nd.stat().st_size > 0:
+        try:
+            rows = []
+            for line in nd.open("r", encoding="utf-8"):
+                line = line.strip()
+                if line:
+                    try:
+                        rows.append(json.loads(line))
+                    except Exception:
+                        pass
+            if rows:
+                df = pd.DataFrame(rows)
+                # Deduplicate in case pipeline wrote duplicates
+                if "id" in df.columns:
+                    df = df.drop_duplicates(subset=["id"], keep="last")
+                else:
+                    df = df.drop_duplicates(keep="last")
+                if not df.empty and "keywords" in df.columns:
+                    def norm_kw(x):
+                        if isinstance(x, (list, tuple, set)):
+                            return list(x)
+                        if hasattr(x, "tolist"):
+                            try:
+                                return list(x.tolist())
+                            except Exception:
+                                pass
+                        if isinstance(x, str):
+                            if x.startswith("关键词：") or x.startswith("关键字："):
+                                x = x.split("：", 1)[1]
+                            return [p.strip() for p in x.replace("，", ",").split(",") if p.strip()]
+                        return []
+                    df["keywords"] = df["keywords"].apply(norm_kw)
+                    df["date_dt"] = pd.to_datetime(df["date"], errors="coerce")
+                    df = df.sort_values(by=["date_dt", "rank"], ascending=[False, True])
+                return df
+        except Exception:
+            pass  # Fall through to parquet fallback
+
+    # Fallback: read individual parquet files
     files = sorted(STRUCTURED_DIR.glob("*.parquet"))
     dfs = []
     for f in files:
@@ -57,27 +100,7 @@ def load_items(_signature: str) -> pd.DataFrame:
             dfs.append(pd.read_parquet(f))
         except Exception:
             pass
-    parquet_df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
-
-    nd = STRUCTURED_DIR / "items.ndjson"
-    ndjson_df = pd.DataFrame()
-    if nd.exists():
-        try:
-            ndjson_df = pd.DataFrame([json.loads(l) for l in nd.open()])
-        except Exception:
-            ndjson_df = pd.DataFrame()
-
-    if not parquet_df.empty and not ndjson_df.empty:
-        # Prefer latest ndjson entries and deduplicate by stable item id.
-        df = pd.concat([parquet_df, ndjson_df], ignore_index=True)
-        if "id" in df.columns:
-            df = df.drop_duplicates(subset=["id"], keep="last")
-        else:
-            df = df.drop_duplicates(keep="last")
-    elif not parquet_df.empty:
-        df = parquet_df
-    else:
-        df = ndjson_df
+    df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
 
     if not df.empty and "keywords" in df.columns:
         def norm_kw(x):
