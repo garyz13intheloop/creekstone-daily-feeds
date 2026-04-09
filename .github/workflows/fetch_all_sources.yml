@@ -329,3 +329,14 @@ jobs:
         done
         echo "Push failed after retries."
         exit 1
+
+    - name: Sync to production repo (garyz13intheloop/creekstone-daily-feeds)
+      run: |
+        PROD_URL="https://${{ secrets.PAT }}@github.com/garyz13intheloop/creekstone-daily-feeds.git"
+        for i in 1 2 3; do
+          git push "${PROD_URL}" "HEAD:main" && echo "Synced to production repo." && exit 0
+          echo "Sync attempt ${i} failed, retrying..."
+          sleep 5
+        done
+        echo "Sync to production repo failed after retries."
+        exit 1
