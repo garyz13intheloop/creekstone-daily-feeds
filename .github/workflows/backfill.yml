@@ -51,22 +51,6 @@ jobs:
         git add .
         git commit -m "Backfill data ${{ github.event.inputs.start_date }} ~ ${{ github.event.inputs.end_date }}" || echo "No changes"
 
-    - name: Push to origin (HarryB25)
+    - name: Push changes
       run: |
         git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
-
-    - name: Sync to production repo (garyz13intheloop/creekstone-daily-feeds)
-      env:
-        PROD_PAT: ${{ secrets.PROD_PAT }}
-        PAT: ${{ secrets.PAT }}
-      run: |
-        # 优先用 PROD_PAT（garyz13 账号），否则 fallback 到 PAT
-        TOKEN="${PROD_PAT:-$PAT}"
-        for i in 1 2 3; do
-          git push "https://${TOKEN}@github.com/garyz13intheloop/creekstone-daily-feeds.git" HEAD:main \
-            && echo "Synced to production." && exit 0
-          echo "Attempt $i failed, retrying..."
-          sleep 5
-        done
-        echo "Sync failed — push manually: git push gary main"
-        exit 1
