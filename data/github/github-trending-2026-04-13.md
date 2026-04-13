@@ -1,12 +1,14 @@
 # GitHub Trending 日榜 | 2026-04-13
 
-> 共 9 个项目
+> 共 13 个项目
 
 ## 📑 目录
 
 - [HTML](#HTML) (1 个项目)
-- [Python](#Python) (4 个项目)
-- [TypeScript](#TypeScript) (3 个项目)
+- [JavaScript](#JavaScript) (1 个项目)
+- [Jupyter Notebook](#Jupyter-Notebook) (1 个项目)
+- [Python](#Python) (5 个项目)
+- [TypeScript](#TypeScript) (4 个项目)
 - [Unknown](#Unknown) (1 个项目)
 
 ---
@@ -24,18 +26,56 @@
 
 **关键词**: shanraisshan, practice, made, claude, perfect, vibe, coding, agentic
 
-**评分**: 56
+**评分**: 0
 
 **项目地址**: [GitHub](https://github.com/shanraisshan/claude-code-best-practice)
 
 ---
 
+## JavaScript
+
+## [2. gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done)
+
+**语言**: JavaScript  
+**Stars**: ⭐ 0 (+630 today) | **Forks**: 🔱 4.3k
+
+**原始描述**: A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.
+
+**中文介绍（README总结）**: A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.
+
+**关键词**: gsd-build, get-shit-done, light-weight, powerful, meta-prompting, context, engineering, spec-driven
+
+**评分**: 0
+
+**项目地址**: [GitHub](https://github.com/gsd-build/get-shit-done)
+
+---
+
+## Jupyter Notebook
+
+## [3. anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks)
+
+**语言**: Jupyter Notebook  
+**Stars**: ⭐ 0 (+328 today) | **Forks**: 🔱 4.3k
+
+**原始描述**: A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.
+
+**中文介绍（README总结）**: A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.
+
+**关键词**: of, anthropics, claude-cookbooks, collection, notebooks, recipes, showcasing, some
+
+**评分**: 0
+
+**项目地址**: [GitHub](https://github.com/anthropics/claude-cookbooks)
+
+---
+
 ## Python
 
-## [2. NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+## [4. NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
 
 **语言**: Python  
-**Stars**: ⭐ 0 (+7.5k today) | **Forks**: 🔱 9.5k
+**Stars**: ⭐ 0 (+7.5k today) | **Forks**: 🔱 9.8k
 
 **原始描述**: The agent that grows with you
 
@@ -49,10 +89,10 @@
 
 ---
 
-## [3. microsoft/markitdown](https://github.com/microsoft/markitdown)
+## [5. microsoft/markitdown](https://github.com/microsoft/markitdown)
 
 **语言**: Python  
-**Stars**: ⭐ 0 (+2.5k today) | **Forks**: 🔱 6.6k
+**Stars**: ⭐ 0 (+2.5k today) | **Forks**: 🔱 6.7k
 
 **原始描述**: Python tool for converting files and office documents to Markdown.
 
@@ -66,7 +106,24 @@
 
 ---
 
-## [4. ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp)
+## [6. virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund)
+
+**语言**: Python  
+**Stars**: ⭐ 0 (+663 today) | **Forks**: 🔱 9.1k
+
+**原始描述**: An AI Hedge Fund Team
+
+**中文介绍（README总结）**: An AI Hedge Fund Team
+
+**关键词**: An, of, virattt, ai-hedge-fund, Hedge, Fund, Team, proof
+
+**评分**: 0
+
+**项目地址**: [GitHub](https://github.com/virattt/ai-hedge-fund)
+
+---
+
+## [7. ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp)
 
 **语言**: Python  
 **Stars**: ⭐ 0 (+215 today) | **Forks**: 🔱 1.9k
@@ -83,29 +140,29 @@
 
 ---
 
-## [5. virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund)
+## [8. hacksider/Deep-Live-Cam](https://github.com/hacksider/Deep-Live-Cam)
 
 **语言**: Python  
-**Stars**: ⭐ 0 (+663 today) | **Forks**: 🔱 9.1k
+**Stars**: ⭐ 0 (+235 today) | **Forks**: 🔱 13.1k
 
-**原始描述**: An AI Hedge Fund Team
+**原始描述**: real time face swap and one-click video deepfake with only a single image
 
-**中文介绍（README总结）**: An AI Hedge Fund Team
+**中文介绍（README总结）**: real time face swap and one-click video deepfake with only a single image
 
-**关键词**: An, of, virattt, ai-hedge-fund, Hedge, Fund, Team, proof
+**关键词**: hacksider, Deep-Live-Cam, real, time, face, swap, one-click, video
 
-**评分**: 65
+**评分**: 0
 
-**项目地址**: [GitHub](https://github.com/virattt/ai-hedge-fund)
+**项目地址**: [GitHub](https://github.com/hacksider/Deep-Live-Cam)
 
 ---
 
 ## TypeScript
 
-## [6. multica-ai/multica](https://github.com/multica-ai/multica)
+## [9. multica-ai/multica](https://github.com/multica-ai/multica)
 
 **语言**: TypeScript  
-**Stars**: ⭐ 0 (+1.6k today) | **Forks**: 🔱 1.2k
+**Stars**: ⭐ 0 (+1.6k today) | **Forks**: 🔱 1.3k
 
 **原始描述**: The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.
 
@@ -119,7 +176,7 @@
 
 ---
 
-## [7. coleam00/Archon](https://github.com/coleam00/Archon)
+## [10. coleam00/Archon](https://github.com/coleam00/Archon)
 
 **语言**: TypeScript  
 **Stars**: ⭐ 0 (+612 today) | **Forks**: 🔱 2.7k
@@ -136,7 +193,7 @@
 
 ---
 
-## [8. snarktank/ralph](https://github.com/snarktank/ralph)
+## [11. snarktank/ralph](https://github.com/snarktank/ralph)
 
 **语言**: TypeScript  
 **Stars**: ⭐ 0 (+463 today) | **Forks**: 🔱 1.6k
@@ -153,12 +210,29 @@
 
 ---
 
+## [12. jamiepine/voicebox](https://github.com/jamiepine/voicebox)
+
+**语言**: TypeScript  
+**Stars**: ⭐ 0 (+491 today) | **Forks**: 🔱 1.9k
+
+**原始描述**: The open-source voice synthesis studio
+
+**中文介绍（README总结）**: The open-source voice synthesis studio
+
+**关键词**: jamiepine, voicebox, open-source, voice, synthesis, studio, Clone, voices
+
+**评分**: 0
+
+**项目地址**: [GitHub](https://github.com/jamiepine/voicebox)
+
+---
+
 ## Unknown
 
-## [9. forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
+## [13. forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
 
 **语言**: Unknown  
-**Stars**: ⭐ 0 (+2.4k today) | **Forks**: 🔱 1.5k
+**Stars**: ⭐ 0 (+2.4k today) | **Forks**: 🔱 1.6k
 
 **原始描述**: A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.
 
