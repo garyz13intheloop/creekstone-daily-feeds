@@ -135,10 +135,14 @@ jobs:
         exit 1
 
     - name: Sync to production repo (garyz13intheloop/creekstone-daily-feeds)
+      env:
+        PROD_PAT: ${{ secrets.PROD_PAT }}
+        PAT: ${{ secrets.PAT }}
       run: |
-        PROD_URL="https://${{ secrets.PAT }}@github.com/garyz13intheloop/creekstone-daily-feeds.git"
+        TOKEN="${PROD_PAT:-$PAT}"
         for i in 1 2 3; do
-          git push "${PROD_URL}" "HEAD:main" && echo "Synced to production repo." && exit 0
+          git push "https://${TOKEN}@github.com/garyz13intheloop/creekstone-daily-feeds.git" "HEAD:main" \
+            && echo "Synced to production repo." && exit 0
           echo "Sync attempt ${i} failed, retrying..."
           sleep 5
         done

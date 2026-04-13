@@ -1,0 +1,72 @@
+name: Backfill Date Range
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: "补跑起始日期 (YYYY-MM-DD)"
+        required: true
+        default: "2026-04-09"
+      end_date:
+        description: "补跑结束日期 (YYYY-MM-DD)"
+        required: true
+        default: "2026-04-12"
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run backfill
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+        OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+        OPENAI_MODEL_ALTERNATE_1: ${{ secrets.OPENAI_MODEL_ALTERNATE_1 }}
+        OPENAI_MODEL_ALTERNATE_2: ${{ secrets.OPENAI_MODEL_ALTERNATE_2 }}
+        PRODUCTHUNT_DEVELOPER_TOKEN: ${{ secrets.PRODUCTHUNT_DEVELOPER_TOKEN }}
+      run: |
+        python scripts/backfill_range.py ${{ github.event.inputs.start_date }} ${{ github.event.inputs.end_date }}
+
+    - name: Commit files
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -m "Backfill data ${{ github.event.inputs.start_date }} ~ ${{ github.event.inputs.end_date }}" || echo "No changes"
+
+    - name: Push to origin (HarryB25)
+      run: |
+        git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
+
+    - name: Sync to production repo (garyz13intheloop/creekstone-daily-feeds)
+      env:
+        PROD_PAT: ${{ secrets.PROD_PAT }}
+        PAT: ${{ secrets.PAT }}
+      run: |
+        # 优先用 PROD_PAT（garyz13 账号），否则 fallback 到 PAT
+        TOKEN="${PROD_PAT:-$PAT}"
+        for i in 1 2 3; do
+          git push "https://${TOKEN}@github.com/garyz13intheloop/creekstone-daily-feeds.git" HEAD:main \
+            && echo "Synced to production." && exit 0
+          echo "Attempt $i failed, retrying..."
+          sleep 5
+        done
+        echo "Sync failed — push manually: git push gary main"
+        exit 1
