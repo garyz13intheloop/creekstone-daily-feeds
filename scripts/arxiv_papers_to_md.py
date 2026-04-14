@@ -22,7 +22,7 @@ import json
 from typing import List, Dict
 from common.storage import save_structured_items, build_item_id
 from common.scoring import score_content
-from common.openai_fallback import chat_completion_content, get_openai_timeout, is_gpt5_model
+from common.openai_fallback import chat_completion_content, get_openai_timeout, is_gpt5_model, is_reasoning_model
 from common.keyword_utils import (
     investor_keyword_prompt,
     investor_keyword_repair_prompt,
@@ -107,7 +107,7 @@ def _chat_json_content(messages, max_tokens: int, temperature: float) -> str:
         json_mode=True,
         default_model=model_name,
         timeout=_get_request_timeout(),
-        retry_max_tokens=max(max_tokens, 1200 if is_gpt5_model(model_name) else 300),
+        retry_max_tokens=max(max_tokens, 1500 if is_reasoning_model(model_name) else 1200 if is_gpt5_model(model_name) else 300),
     )
     if used_model != model_name:
         print(f"模型回退: {model_name} -> {used_model}")

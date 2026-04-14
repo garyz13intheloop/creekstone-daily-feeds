@@ -47,6 +47,18 @@ def is_gpt5_model(model_name: str) -> bool:
     return (model_name or "").startswith("gpt-5")
 
 
+def is_reasoning_model(model_name: str) -> bool:
+    """思维链推理模型：内部有 thinking 过程，需要更多 max_tokens，答案可能在 reasoning 字段。"""
+    m = (model_name or "").lower()
+    return any(kw in m for kw in (
+        "glm-5", "glm-z",           # Z.AI GLM-5.x / GLM-Z
+        "kimi-k2", "moonshot",       # Kimi K2.x
+        "minimax-m2", "minimax/m2",  # MiniMax M2.x
+        "o1", "o3", "o4",            # OpenAI o-series
+        "deepseek-r",                # DeepSeek-R
+    ))
+
+
 def _normalize_model_name(raw: str) -> str:
     # Guard against malformed .env lines like:
     # OPENAI_MODEL_ALTERNATE_2=gpt-4o-mini OPENAI_REQUEST_TIMEOUT=90
@@ -225,6 +237,12 @@ def chat_completion_content(
             try:
                 resp = _create_with_retry(client, kwargs, timeout)
                 content = (resp.choices[0].message.content or "").strip()
+                # 推理模型（GLM-5.x / Kimi K2 / MiniMax M2 等）答案可能在 reasoning 字段
+                if not content:
+                    reasoning = getattr(resp.choices[0].message, "reasoning", None) or ""
+                    if reasoning.strip():
+                        # 取推理末尾作为答案兜底（极少发生，一般加大 max_tokens 后 content 会正常填充）
+                        content = reasoning.strip().splitlines()[-1].strip()
                 if content:
                     return content, model
             except Exception as exc:

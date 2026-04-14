@@ -29,7 +29,7 @@ from common.keyword_utils import (  # noqa: E402
 )
 from common.scoring import score_content  # noqa: E402
 from common.storage import build_item_id, save_structured_items  # noqa: E402
-from common.openai_fallback import chat_completion_content, get_openai_timeout, is_gpt5_model  # noqa: E402
+from common.openai_fallback import chat_completion_content, get_openai_timeout, is_gpt5_model, is_reasoning_model  # noqa: E402
 
 
 AI_KEYWORDS = [
@@ -92,7 +92,7 @@ def _chat_json_content(messages, max_tokens: int, temperature: float) -> str:
         json_mode=True,
         default_model=model_name,
         timeout=_get_openai_timeout(),
-        retry_max_tokens=max(max_tokens, 1200 if is_gpt5_model(model_name) else 300),
+        retry_max_tokens=max(max_tokens, 1500 if is_reasoning_model(model_name) else 1200 if is_gpt5_model(model_name) else 300),
     )
     if used_model != model_name:
         print(f"模型回退: {model_name} -> {used_model}")
@@ -109,7 +109,7 @@ def _chat_text_content(messages, max_tokens: int, temperature: float) -> str:
         json_mode=False,
         default_model=model_name,
         timeout=_get_openai_timeout(),
-        retry_max_tokens=max(max_tokens, 700 if is_gpt5_model(model_name) else 260),
+        retry_max_tokens=max(max_tokens, 1300 if is_reasoning_model(model_name) else 700 if is_gpt5_model(model_name) else 260),
     )
     if used_model != model_name:
         print(f"模型回退: {model_name} -> {used_model}")
