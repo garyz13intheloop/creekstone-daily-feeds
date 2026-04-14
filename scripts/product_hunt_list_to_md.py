@@ -90,7 +90,7 @@ def _chat_json_content(messages, max_tokens: int, temperature: float) -> str:
         json_mode=True,
         default_model=model_name,
         timeout=_get_request_timeout(),
-        retry_max_tokens=max(max_tokens, 1500 if is_reasoning_model(model_name) else 1200 if is_gpt5_model(model_name) else 300),
+        retry_max_tokens=max(max_tokens, 600 if is_reasoning_model(model_name) else 1200 if is_gpt5_model(model_name) else 300),
     )
     if used_model != model_name:
         print(f"模型回退: {model_name} -> {used_model}")
@@ -107,7 +107,7 @@ def _chat_text_content(messages, max_tokens: int, temperature: float) -> str:
         json_mode=False,
         default_model=model_name,
         timeout=_get_request_timeout(),
-        retry_max_tokens=max(max_tokens, 1300 if is_reasoning_model(model_name) else 900 if is_gpt5_model(model_name) else 260),
+        retry_max_tokens=max(max_tokens, 600 if is_reasoning_model(model_name) else 900 if is_gpt5_model(model_name) else 260),
     )
     if used_model != model_name:
         print(f"模型回退: {model_name} -> {used_model}")

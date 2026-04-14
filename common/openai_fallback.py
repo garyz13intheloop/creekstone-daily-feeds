@@ -220,16 +220,23 @@ def chat_completion_content(
     candidates = get_model_candidates(default_model)
     last_exc = None
 
+    consecutive_empty = 0  # 连续空响应计数，超阈值直接放弃省 token
+
     for model in candidates:
         for pass_index in range(2):
+            # 推理模型需要足够 token 完成思考 + 输出答案，但设上限避免浪费
+            effective_max = max_tokens if pass_index == 0 else (retry_max_tokens or max_tokens)
+            if is_reasoning_model(model):
+                effective_max = min(max(effective_max, 800), 1800)  # [800, 1800]
+
             kwargs = {
                 "model": model,
                 "messages": messages,
-                "max_tokens": max_tokens if pass_index == 0 else (retry_max_tokens or max_tokens),
+                "max_tokens": effective_max,
                 "temperature": temperature,
                 "timeout": timeout,
             }
-            if is_gpt5_model(model):
+            if is_gpt5_model(model) or is_reasoning_model(model):
                 kwargs["reasoning_effort"] = "low"
             if json_mode and pass_index == 0:
                 kwargs["response_format"] = {"type": "json_object"}
@@ -237,14 +244,17 @@ def chat_completion_content(
             try:
                 resp = _create_with_retry(client, kwargs, timeout)
                 content = (resp.choices[0].message.content or "").strip()
-                # 推理模型（GLM-5.x / Kimi K2 / MiniMax M2 等）答案可能在 reasoning 字段
+                # 推理模型答案可能在 reasoning 字段（content 为空时兜底）
                 if not content:
                     reasoning = getattr(resp.choices[0].message, "reasoning", None) or ""
                     if reasoning.strip():
-                        # 取推理末尾作为答案兜底（极少发生，一般加大 max_tokens 后 content 会正常填充）
                         content = reasoning.strip().splitlines()[-1].strip()
                 if content:
                     return content, model
+                # 空响应：计数，超 3 次说明所有模型都不可用，提前放弃
+                consecutive_empty += 1
+                if consecutive_empty >= 3:
+                    raise RuntimeError("all models returned empty content (fast-fail to save tokens)")
             except Exception as exc:
                 last_exc = exc
                 if _is_model_unavailable_error(exc) or _is_retryable_error(exc):
