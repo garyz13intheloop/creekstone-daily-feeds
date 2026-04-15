@@ -1,0 +1,11 @@
+# GitHub Actions 数据管道依赖
+requests>=2.28.0,<3.0.0
+beautifulsoup4>=4.11.0
+openai>=1.0.0,<2.0.0
+pytz>=2022.1
+python-dotenv>=0.20.0
+urllib3>=1.26.0,<3.0.0
+xmltodict>=0.13.0
+scikit-learn>=1.4.0,<2.0.0
+pandas>=2.1.0,<3.0.0
+pyarrow>=14.0.0,<20.0.0

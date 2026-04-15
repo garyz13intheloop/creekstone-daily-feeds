@@ -56,7 +56,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements-pipeline.txt
 
     - name: Validate OpenAI secret
       env:
