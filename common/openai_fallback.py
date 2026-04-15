@@ -236,7 +236,7 @@ def chat_completion_content(
                 "temperature": temperature,
                 "timeout": timeout,
             }
-            if is_gpt5_model(model) or is_reasoning_model(model):
+            if is_gpt5_model(model):
                 kwargs["reasoning_effort"] = "low"
             if json_mode and pass_index == 0:
                 kwargs["response_format"] = {"type": "json_object"}
