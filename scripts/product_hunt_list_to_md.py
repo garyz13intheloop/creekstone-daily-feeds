@@ -196,7 +196,8 @@ class Product:
             self.tagline, self.description
         )
         self.keyword = self.generate_keywords()
-        self._score_cache = None
+        # 立即评分，与翻译/关键词交错，避免最后批量打 30 个请求触发 rate limit
+        self._score_cache = self._compute_score()
 
     def get_image_url_from_media(self, media):
         """从API返回的media字段中获取图片URL"""
@@ -452,13 +453,17 @@ class Product:
             },
         }
 
+    def _compute_score(self) -> dict:
+        """评分（在 __init__ 阶段调用，与翻译/关键词交错，避免批量 rate limit）"""
+        return score_content(
+            f"名称: {self.name}\n标语: {self.tagline}\n描述: {self.description}\n关键词: {self.keyword}",
+            client,
+            kind="producthunt",
+        )
+
     def _get_score(self) -> dict:
         if self._score_cache is None:
-            self._score_cache = score_content(
-                f"名称: {self.name}\n标语: {self.tagline}\n描述: {self.description}\n关键词: {self.keyword}",
-                client,
-                kind="producthunt",
-            )
+            self._score_cache = self._compute_score()
         return self._score_cache
 
 def get_producthunt_token():

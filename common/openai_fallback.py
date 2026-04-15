@@ -253,8 +253,9 @@ def chat_completion_content(
                         content = reasoning.strip().splitlines()[-1].strip()
                 if content:
                     return content, model
-                # 空响应：计数，超 3 次说明所有模型都不可用，提前放弃
+                # 空响应：短暂等待后重试（MiniMax rate limit 时返回空而非 429）
                 consecutive_empty += 1
+                time.sleep(3)
                 if consecutive_empty >= 3:
                     raise RuntimeError("all models returned empty content (fast-fail to save tokens)")
             except Exception as exc:
