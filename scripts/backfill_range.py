@@ -33,9 +33,16 @@ def _dates(start: str, end: str):
         cur = cur + timedelta(days=1)
 
 
+# 每个脚本最多跑 12 分钟，防止真卡死时无限等待
+_SCRIPT_TIMEOUT = int(os.getenv("BACKFILL_SCRIPT_TIMEOUT", "720"))
+
+
 def _run(cmd: list[str], env: dict[str, str]):
     print("\n$", " ".join(cmd))
-    subprocess.run(cmd, env=env, check=True)
+    try:
+        subprocess.run(cmd, env=env, check=True, timeout=_SCRIPT_TIMEOUT)
+    except subprocess.TimeoutExpired:
+        print(f"⚠️  超时 ({_SCRIPT_TIMEOUT}s)，跳过: {' '.join(cmd)}")
 
 
 def main() -> int:

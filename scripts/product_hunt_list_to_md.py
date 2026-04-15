@@ -191,9 +191,10 @@ class Product:
         self.website = website
         self.url = url
         self.og_image_url = self.get_image_url_from_media(media)
-        # 先翻译，再抽关键词，减少英文碎词污染
-        self.translated_tagline = self.translate_text(self.tagline)
-        self.translated_description = self.translate_text(self.description)
+        # 合并翻译：tagline + description 一次 LLM 调用，省 50% token
+        self.translated_tagline, self.translated_description = self.translate_both(
+            self.tagline, self.description
+        )
         self.keyword = self.generate_keywords()
         self._score_cache = None
 
@@ -318,6 +319,38 @@ class Product:
             if not ok:
                 fallback = synthesize_keywords_from_context(fallback_context, source="producthunt", max_items=10)
             return ", ".join(fallback)
+
+    def translate_both(self, tagline: str, description: str):
+        """一次 LLM 调用同时翻译 tagline 和 description，省 50% token。"""
+        if client is None:
+            return tagline, description
+        t = (tagline or "").strip()
+        d = (description or "").strip()
+        if not t and not d:
+            return tagline, description
+        try:
+            print(f"正在翻译 {self.name} 的内容...")
+            prompt = f"请将以下两段内容分别翻译成地道中文，保留技术术语。严格按格式输出，不要多余文字：\n标语：{t}\n介绍：{d}"
+            raw = _chat_text_content(
+                messages=[
+                    {"role": "system", "content": "你是专业中英翻译，只输出翻译结果，格式为：标语：xxx\n介绍：xxx"},
+                    {"role": "user", "content": prompt},
+                ],
+                max_tokens=600 if is_gpt5_model(_get_model_name()) else 400,
+                temperature=0.2,
+            )
+            zh_tagline, zh_desc = t, d
+            for line in raw.splitlines():
+                line = line.strip()
+                if line.startswith("标语："):
+                    zh_tagline = line[3:].strip() or t
+                elif line.startswith("介绍："):
+                    zh_desc = line[3:].strip() or d
+            print(f"成功翻译 {self.name} 的内容")
+            return zh_tagline, zh_desc
+        except Exception as e:
+            print(f"翻译失败，回退原文: {e}")
+            return tagline, description
 
     def translate_text(self, text: str) -> str:
         """使用OpenAI翻译文本内容"""
