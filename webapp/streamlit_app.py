@@ -92,12 +92,14 @@ def load_items(_signature: str) -> pd.DataFrame:
         except Exception:
             pass  # Fall through to parquet fallback
 
-    # Fallback: read individual parquet files
+    # Fallback: read individual parquet files (requires pyarrow, optional)
     files = sorted(STRUCTURED_DIR.glob("*.parquet"))
     dfs = []
     for f in files:
         try:
             dfs.append(pd.read_parquet(f))
+        except ImportError:
+            pass  # pyarrow not installed, skip parquet fallback
         except Exception:
             pass
     df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
@@ -237,7 +239,10 @@ def _rewrite_date_parquet(date_str: str, rows: list[dict]) -> None:
                 fixed[k] = v
         fixed_rows.append(fixed)
     df = pd.DataFrame(fixed_rows)
-    df.to_parquet(path, index=False)
+    try:
+        df.to_parquet(path, index=False)
+    except ImportError:
+        pass  # pyarrow not installed, skip parquet write
 
 
 def _parse_keyword_input(raw: str) -> list[str]:
