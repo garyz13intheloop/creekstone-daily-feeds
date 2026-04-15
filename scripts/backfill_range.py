@@ -34,7 +34,7 @@ def _dates(start: str, end: str):
 
 
 # 每个脚本最多跑 12 分钟，防止真卡死时无限等待
-_SCRIPT_TIMEOUT = int(os.getenv("BACKFILL_SCRIPT_TIMEOUT", "720"))
+_SCRIPT_TIMEOUT = int(os.getenv("BACKFILL_SCRIPT_TIMEOUT", "1800"))
 
 
 def _run(cmd: list[str], env: dict[str, str]):
@@ -43,6 +43,8 @@ def _run(cmd: list[str], env: dict[str, str]):
         subprocess.run(cmd, env=env, check=True, timeout=_SCRIPT_TIMEOUT)
     except subprocess.TimeoutExpired:
         print(f"⚠️  超时 ({_SCRIPT_TIMEOUT}s)，跳过: {' '.join(cmd)}")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️  脚本退出码 {e.returncode}，继续下一个来源: {' '.join(cmd)}")
 
 
 def main() -> int:
