@@ -238,7 +238,9 @@ def chat_completion_content(
             }
             if is_gpt5_model(model):
                 kwargs["reasoning_effort"] = "low"
-            if json_mode and pass_index == 0:
+            # 推理模型（MiniMax/GLM/Kimi）不使用 response_format，靠 prompt 指令输出 JSON
+            # json_mode 仅对非推理模型且第一次 pass 时生效
+            if json_mode and pass_index == 0 and not is_reasoning_model(model):
                 kwargs["response_format"] = {"type": "json_object"}
 
             try:
