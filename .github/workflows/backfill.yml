@@ -18,7 +18,7 @@ permissions:
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
 
     steps:
     - name: Checkout repository
@@ -48,13 +48,11 @@ jobs:
       run: |
         python scripts/backfill_range.py ${{ github.event.inputs.start_date }} ${{ github.event.inputs.end_date }}
 
-    - name: Commit files
+    - name: Commit and push
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
         git commit -m "Backfill data ${{ github.event.inputs.start_date }} ~ ${{ github.event.inputs.end_date }}" || echo "No changes"
-
-    - name: Push changes
-      run: |
+        git pull --rebase "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" main
         git push "https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:main
