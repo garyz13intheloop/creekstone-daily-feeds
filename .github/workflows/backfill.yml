@@ -46,6 +46,8 @@ jobs:
         OPENAI_REQUEST_TIMEOUT: "90"
         OPENAI_RETRY_ATTEMPTS: "1"
         BACKFILL_SCRIPT_TIMEOUT: "1500"
+        PAT: ${{ secrets.PAT }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
         python scripts/backfill_range.py ${{ github.event.inputs.start_date }} ${{ github.event.inputs.end_date }}
 

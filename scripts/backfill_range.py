@@ -79,6 +79,14 @@ def main() -> int:
         _run([sys.executable, "scripts/github_trending_to_md.py"], env)
         _run([sys.executable, "scripts/clawhub_skills_to_md.py"], env)
 
+        # 每天跑完立即 commit，超时也能保住已完成的数据
+        subprocess.run(["git", "add", "."], check=False)
+        subprocess.run(["git", "commit", "-m", f"Backfill data {d}"], check=False)
+        subprocess.run(
+            ["git", "push", f"https://{os.getenv('PAT')}@github.com/{os.getenv('GITHUB_REPOSITORY')}.git", "HEAD:main"],
+            check=False,
+        )
+
     # refresh insights + columns after backfill
     _run([sys.executable, "scripts/keyword_trends.py"], base_env)
     _run([sys.executable, "scripts/generate_columns.py"], base_env)
