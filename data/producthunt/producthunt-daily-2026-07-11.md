@@ -1,0 +1,488 @@
+# PH AI 日榜 | 2026-07-11
+
+> Daily Featured AI: 13 | Daily AI(去重后): 30
+
+## Daily Featured AI
+
+## [1. ChatCut](https://www.producthunt.com/products/chatcut-ai-video-editor?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Your AI video editor in ChatGPT, desktop, and web
+**介绍**：ChatCut is a lightweight, professional-grade AI video editor anyone can use, even without editing experience. It’s like having a personal video editing assistant that understands your footage, intent, and timeline. Make structural edits, fine-tune cuts, add captions, B-roll, music, voiceover, motion graphics, stock footage, and AI-generated video in one place. Every edit stays editable on a real timeline, with XML export when you want to keep working elsewhere.
+**产品网站**: [立即访问](https://www.producthunt.com/r/FMMICV7TH5Z6XW?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/chatcut-ai-video-editor?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![ChatCut](https://ph-files.imgix.net/63e46d86-91c2-47ce-b208-78eae05d1ea2.png?auto=format)
+
+**关键词**：
+**票数**: 🔺669
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [2. Sim](https://www.producthunt.com/products/sim-studio?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Open-source workspace for AI agents and workflows
+**介绍**：Sim is an open-source workspace to build agentic workflows. Connect your AI agents and workflows to 1,000+ integrations and LLMs.
+**产品网站**: [立即访问](https://www.producthunt.com/r/4RBEK6IAGTJL4P?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/sim-studio?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Sim](https://ph-files.imgix.net/0b90e707-2674-4c35-9085-14d354983621.png?auto=format)
+
+**关键词**：Agent, LLM
+**票数**: 🔺614
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [3. PlugThis](https://www.producthunt.com/products/plugthis-chrome-extension-generator?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Create your own Chrome Extensions by chatting with AI
+**介绍**：You wanted a Chrome extension that would save you 15 minutes a day. You searched the Chrome Web Store, and it's not there. Now you can just describe it in plain English, and PlugThis builds it for you. The code is yours. Want changes? Chat. Need login or a database? Connect Supabase. Ready to publish? We generate the icons, screenshots, and listing copy the store asks for. Everyone else builds web apps. We build Chrome extensions.
+**产品网站**: [立即访问](https://www.producthunt.com/r/KCCS273QTMHFNM?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/plugthis-chrome-extension-generator?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![PlugThis](https://ph-files.imgix.net/f8ca7c04-3013-415d-af36-9477eb45d623.png?auto=format)
+
+**关键词**：
+**票数**: 🔺529
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [4. Scarlett.](https://www.producthunt.com/products/tryscarlett?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Your AI Co-Worker in Slack & iMessage
+**介绍**：Not another AI bot, a real colleague to work alongside your team. Give your team superpowers or even run your company on autopilot.
+**产品网站**: [立即访问](https://www.producthunt.com/r/XIGDUT3IHDGZCY?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/tryscarlett?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Scarlett.](https://ph-files.imgix.net/417b4edd-03d6-4846-9c59-cd76b928fb28.png?auto=format)
+
+**关键词**：
+**票数**: 🔺405
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [5. ConnectMachine 2.0](https://www.producthunt.com/products/connectmachine-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：AI digital business card that remembers everyone you meet
+**介绍**：Create unlimited business cards, scan any paper card, LinkedIn QR, or badge in seconds, and share via QR, Wallet, or AirDrop. Your private AI remembers who you met and why it mattered, then syncs everyone into your CRM. Encrypted, no public feed. New in v2.0: Team Plan with branded cards and admin controls, AI Note Taker for meeting transcripts and summaries, ShareBack for instant mutual exchange, follow-up reminders, and the full app in 5 languages. Much of it built from user requests.
+**产品网站**: [立即访问](https://www.producthunt.com/r/HVV46NUF3UEKB4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/connectmachine-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![ConnectMachine 2.0](https://ph-files.imgix.net/283039b5-be14-4530-93e5-b326b88b3167.png?auto=format)
+
+**关键词**：
+**票数**: 🔺391
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [6. GPT-5.6](https://www.producthunt.com/products/openai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：A new standard for intelligence and efficiency
+**介绍**：GPT-5.6 is rolling out in the API! Our new family of models gives builders three options: Sol (our flagship model for the hardest agentic tasks), Terra (balanced for everyday workflows), and Luna (fast and cost-efficient). GPT-5.6 also introduces Programmatic Tool Calling, Multi-agent (beta) for parallel execution, and explicit prompt caching. On July 23, we're teaming up with Product Hunt for OpenAI Day. The top five launches will each receive $10K in API credits.
+**产品网站**: [立即访问](https://www.producthunt.com/r/DERPMSLT64NRPN?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/openai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![GPT-5.6](https://ph-files.imgix.net/4ee3d08f-e758-4af4-9aa5-9cca5234056f.jpeg?auto=format)
+
+**关键词**：Multi-Agent, Agent, API
+**票数**: 🔺297
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [7. Juicy](https://www.producthunt.com/products/juicy-battery-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Beautiful Mac battery alerts, health insights & charge limit
+**介绍**：Juicy replaces Apple's basic battery warnings with beautiful custom alerts at any percentage, complete with screen glow and sounds you can't miss. It also packs charge limiting, per-app energy insights, iPhone and iPad battery health, temperature tracking, and a themeable menu bar icon. One lightweight native Swift app instead of stacking AlDente, coconutBattery, and AirBuddy. Pay once, own forever. Featured twice by Apple as "Apps We Love".
+**产品网站**: [立即访问](https://www.producthunt.com/r/7I6PVVHRJQMBVP?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/juicy-battery-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Juicy](https://ph-files.imgix.net/49c2cefb-e8e5-4e55-8c35-88b8c97ab8b8.png?auto=format)
+
+**关键词**：
+**票数**: 🔺226
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [8. Ship OS by Notion](https://www.producthunt.com/products/notion?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：The agent-native way to ship software
+**介绍**：Run your entire product development cycle in Notion, from customer feedback to a merged PR. Agents handle the triaging, routing, and summarizing. Your team handles the judgment calls.
+**产品网站**: [立即访问](https://www.producthunt.com/r/PXEIFEBEUAO66P?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/notion?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Ship OS by Notion](https://ph-files.imgix.net/f846936e-d3c8-4892-8229-403a8977bdfe.webp?auto=format)
+
+**关键词**：
+**票数**: 🔺153
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [9. StoryChief Connect](https://www.producthunt.com/products/storychief-io?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Publish content from Claude to your website and socials
+**介绍**：Plan, create, and distribute content across every channel from one workspace. StoryChief Connect gives Claude, and your marketing team access to the tools, data, workflows, and publishing channels they need to execute real campaigns. Connect your stack. Turn signals into strategy. Create content for every channel. Collaborate, schedule, publish, and improve from one connected content calendar.ryChief helps marketing teams ship more, with less.
+**产品网站**: [立即访问](https://www.producthunt.com/r/LPE442DWQMPHTC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/storychief-io?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![StoryChief Connect](https://ph-files.imgix.net/44f6a821-899e-4ecb-a3f0-bdbf61cde95a.png?auto=format)
+
+**关键词**：
+**票数**: 🔺139
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [10. Muse Spark 1.1 by Meta AI](https://www.producthunt.com/products/muse-spark-1-1-by-meta?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Multimodal reasoning model built for agentic tasks
+**介绍**：The latest model from Meta Superintelligence Labs and a significant upgrade from Muse Spark. Muse Spark 1.1 is a multimodal reasoning model built for agentic tasks, with major gains in tool and computer use, coding, and multimodal understanding.
+**产品网站**: [立即访问](https://www.producthunt.com/r/33YMGL33H4VFN7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/muse-spark-1-1-by-meta?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Muse Spark 1.1 by Meta AI](https://ph-files.imgix.net/2579513e-8336-41c1-b2ff-f8c71c739f7f.png?auto=format)
+
+**关键词**：Agent
+**票数**: 🔺125
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [11. Mispher](https://www.producthunt.com/products/mispher-agentic-transcription-for-mac?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Dictate, rewrite, translate, and an agent in a single device
+**介绍**：On-device transcription, plus an agent that actually does things. Transcribe: Parakeet EOU (English), Parakeet TDT (25 European languages), CTC (Chinese), Nemotron (~40), Qwen3-ASR Ask: a local LFM2.5 agent that plans and calls tools, Apple Notes, clipboard, files, MCP support. Fully customizable: remap the dial, hotkeys, three HUD styles, tool approvals, swap any model or any prompt. Gemma 4, Qwen3.6 and Ornith 1.0 are coming next. No cloud, no accounts. Free, MIT. Apple Silicon, macOS 26.
+**产品网站**: [立即访问](https://www.producthunt.com/r/YNCMJ72CYBNA7W?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/mispher-agentic-transcription-for-mac?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Mispher](https://ph-files.imgix.net/67cb016d-024b-4e4f-919a-14570611bad7.jpeg?auto=format)
+
+**关键词**：
+**票数**: 🔺100
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [12. RepStandard](https://www.producthunt.com/products/repstandard?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Computer vision counts your reps in real time
+**介绍**：Most fitness apps make you manually log sets or need a wearable to guess your effort. RepStandard's camera does the counting for you - squats, push-ups, sit-ups, and plank, tracked in real time via on-device pose detection (nothing leaves your phone). It also builds an adaptive daily program that scales with your progress, and turns consistency into a game: ranks, XP, streaks, and shareable certificates.
+**产品网站**: [立即访问](https://www.producthunt.com/r/O5AWGVZPUY4JKB?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/repstandard?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![RepStandard](https://ph-files.imgix.net/69164826-2ad5-4c3a-9266-cb8463b29ac5.png?auto=format)
+
+**关键词**：
+**票数**: 🔺98
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [13. Yasmine Works](https://www.producthunt.com/products/yasmine-works?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：An AI coworker that lives in your Slack to get work done
+**介绍**：Yasmine is an AI coworker that lives in your Slack. Each channel becomes a teammate with its own memory, its tools and integrations. Connect your tools and mention it to get real work done — email, docs, data, code, anything. It runs on your own Claude subscription, fully isolated. By Yasmine
+**产品网站**: [立即访问](https://www.producthunt.com/r/F2BT6YUQ3STELW?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/yasmine-works?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Yasmine Works](https://ph-files.imgix.net/502dce6a-84be-4a9d-8273-71566d13184a.png?auto=format)
+
+**关键词**：
+**票数**: 🔺86
+**是否精选**：是
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## Daily AI（去重后，已排除上方 Featured 项）
+
+## [1. Latenode AI Workflow Builder](https://www.producthunt.com/products/ai-agent-builder-by-latenode-v2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Create AI automations & agents using prompts
+**介绍**：Stop building automations manually. Just describe what you want to automate, and AI Agent Builder creates a production-ready AI agent connected to your tools, business data, and AI models. With 5,500+ integrations and built-in orchestration, teams can launch complex AI workflows in minutes.
+**产品网站**: [立即访问](https://www.producthunt.com/r/XZE4P4CRQ3EFGC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/ai-agent-builder-by-latenode-v2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Latenode AI Workflow Builder](https://ph-files.imgix.net/8cc78e31-3232-49d3-a935-ab1b6b1d53cd.png?auto=format)
+
+**关键词**：Agent
+**票数**: 🔺27
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [2. Qlane](https://www.producthunt.com/products/qlane?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Merge PRs with confidence - AI QA that runs your whole app
+**介绍**：Most tools sit on one side of a line. AI code-review tools read the diff but never run it, so they guess "this could be null." Black-box E2E tools drive a real browser but see only the DOM. Qlane boots your whole app in a sandbox and tests it from the inside - browser, shell, source, plus connectable logs and database - so it reports only bugs that actually reproduce, and traces each to its root cause. runs your app, not just your code.
+**产品网站**: [立即访问](https://www.producthunt.com/r/VHXZANXJAKKZ7D?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/qlane?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Qlane](https://ph-files.imgix.net/e4ce36d1-3505-40f6-ac1b-7ad66774299a.png?auto=format)
+
+**关键词**：
+**票数**: 🔺25
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [3. Archly](https://www.producthunt.com/products/archly?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Production-ready prompts for Lovable, Cursor & Claude Code
+**介绍**：Most prompt tools paraphrase your idea and hand it back. Archly interviews you a 7-step intake flow that pulls out the details you didn't know mattered, then engineers a prompt built for your specific platform: Lovable, Bolt, v0, Cursor, Claude Code, Replit, and more. Add your Profile DNA (your stack, your style, your preferences) and every prompt comes out already knowing how you build. It's not a prompt generator. It's a prompt workspace, reusable skills, saved context, prompts that ship.
+**产品网站**: [立即访问](https://www.producthunt.com/r/JOJNQPPOK2VGV7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/archly?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Archly](https://ph-files.imgix.net/a59ff1df-634e-4f24-b81d-e6c70ea5fe59.png?auto=format)
+
+**关键词**：
+**票数**: 🔺23
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [4. Vibe-check skill](https://www.producthunt.com/products/vibe-check-6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Stop your AI from building the wrong app
+**介绍**：Every coding skill starts after you've decided what to build. vibe-check covers the part before, the part that sinks most projects. It digs out the real problem under your vague idea, pressure-tests it against what people actually gripe about on Reddit, and hands your AI agent a blueprint to follow. It can even tell you no, a real no-go verdict. Other skills help you build it right. This one makes sure you're building the right thing.
+**产品网站**: [立即访问](https://www.producthunt.com/r/CCKG6LRLA4B5DX?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/vibe-check-6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Vibe-check skill](https://ph-files.imgix.net/b01b702d-7fd6-47f8-b4b1-072d856077ee.png?auto=format)
+
+**关键词**：Agent
+**票数**: 🔺22
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [5. Shotgun - AI Cofounder Framework](https://www.producthunt.com/products/shotgun-ai-cofounder-framework?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Don't Build Solo. Let Shotgun Ride Along.
+**介绍**：An open-source "operating system" that turns your favorite AI agent into a persistent, personalized virtual cofounder for solo founders. It works on any AI agent, with first-class wiring for Claude Code, Cursor, Antigravity, Gemini CLI, and GitHub Copilot. One line installs it, `shotgun-init` injects the full OS into any folder or existing codebase, you run onboarding once, and from then on the agent knows your venture, remembers everything, builds your product, and keeps your data organized.
+**产品网站**: [立即访问](https://www.producthunt.com/r/R4JR35OKRZRNKW?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/shotgun-ai-cofounder-framework?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Shotgun - AI Cofounder Framework](https://ph-files.imgix.net/319a12fd-c001-4f78-a059-428cbd1f2d72.jpeg?auto=format)
+
+**关键词**：Agent
+**票数**: 🔺20
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [6. Atelier faster runtime for coding agents](https://www.producthunt.com/products/atelier-runtime?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：25% faster while cutting token costs by 30%-67%
+**介绍**：One shot to the right code. Atelier is a context runtime and cost-optimization layer for AI coding agents. Instead of passive indexing or simple output compression, it manages the full context window end-to-end — making it 25% faster while cutting cost by 30% (up to 67% on some workloads), audited head-to-head on SWE-bench. It also ships the strongest code search we've measured: 0.727 MRR vs the best of 10 rival tools' 0.557. Works with Claude Code, Codex, Cursor, and any MCP-compatible agent.
+**产品网站**: [立即访问](https://www.producthunt.com/r/XM5F2C5NQF5T6V?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/atelier-runtime?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Atelier faster runtime for coding agents](https://ph-files.imgix.net/5b3cb8c4-0020-4b7e-908b-73ed03e8d69b.png?auto=format)
+
+**关键词**：Agent
+**票数**: 🔺19
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [7. Pell](https://www.producthunt.com/products/pell-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Turn your "text-to-self" chat into a searchable brain.
+**介绍**：You already text yourself notes. Pell is the same, except it actually finds them when you ask. A WhatsApp contact that remembers everything.
+**产品网站**: [立即访问](https://www.producthunt.com/r/DQXITNSKARGP6G?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/pell-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Pell](https://ph-files.imgix.net/344300bd-c6dd-484f-803c-855f73d09dd9.png?auto=format)
+
+**关键词**：
+**票数**: 🔺17
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [8. Speculos](https://www.producthunt.com/products/speculos?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Type "deploy" in Claude Code. Your app is live.
+**介绍**：Type "deploy" in Claude Code and your app is live at a shareable link ~15 seconds later - frontend and backend. Free for frontend apps, no sign-up. Teams get their own domain, link permissions, and company data connections. Your agent can deploy on its own, too.
+**产品网站**: [立即访问](https://www.producthunt.com/r/CADWRPQI2JBA2L?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/speculos?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Speculos](https://ph-files.imgix.net/69ab7ae7-aa49-4f2a-ba07-12af2b4136f3.png?auto=format)
+
+**关键词**：Agent
+**票数**: 🔺16
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [9. Gatekeep](https://www.producthunt.com/products/gatekeep?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Beat the AI VCs. Get noticed by the actual Investors.
+**介绍**：Pitch AI personas trained on the actual talks and investments of top VCs. Get scored, improve, and get the chance to be noticed by the investors directly. The largest library of AI-trained VC personas for founders connecting deal-flow in a chat experience.
+**产品网站**: [立即访问](https://www.producthunt.com/r/HFRHVCRTLTDVLK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/gatekeep?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Gatekeep](https://ph-files.imgix.net/4f19851c-6b30-4c33-b411-2e79d5b7a0a2.png?auto=format)
+
+**关键词**：
+**票数**: 🔺14
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [10. AInvest Terminal](https://www.producthunt.com/products/ainvest-terminal?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：The AI-powered market terminal for everyday investors
+**介绍**：AInvest Terminal brings pro-grade market tools to everyday investors — without the Bloomberg price tag. Unlike stock apps that bolt AI onto a news feed, Terminal is built around an AI analyst: it scans charts with automatic pattern recognition, calls signals bullish or bearish, and surfaces the news behind every price move. Add real-time US quotes, advanced charting, and watchlists that sync across devices — all in a fast, Mac-native terminal designed for serious individual investors.
+**产品网站**: [立即访问](https://www.producthunt.com/r/ITW5RDC5AUBMSC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/ainvest-terminal?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![AInvest Terminal](https://ph-files.imgix.net/12534305-cabf-4641-b7ce-b9949bd85efb.png?auto=format)
+
+**关键词**：
+**票数**: 🔺13
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [11. SuperCompress](https://www.producthunt.com/products/supercompress?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Cut your LLM Token Costs by 65%
+**介绍**：SuperCompress is open-source prompt compression that cuts LLM token costs by ~65%. Reduce input tokens before OpenAI, Claude, Gemini, RAG, chatbot, and agent calls while preserving answer-critical evidence. It's easily integrable into your app via the Supercompress API, so you can save money but keep users happy. It preserves more than 98% of critical content, while removing more than 65% of tokens on average.
+**产品网站**: [立即访问](https://www.producthunt.com/r/3SDGB6A4DVQHXF?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/supercompress?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![SuperCompress](https://ph-files.imgix.net/d3d9f984-419c-4391-9557-33fbc9de33a4.jpeg?auto=format)
+
+**关键词**：Agent, API, RAG
+**票数**: 🔺13
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [12. MokuBot](https://www.producthunt.com/products/mokubot?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：The AI agent that actually does the work in NetSuite
+**介绍**：Most AI tools generate output you still have to act on. MokuBot is an agent - it executes. Write SuiteQL, build saved searches, workflows and live dashboards, create records in bulk, generate and deploy SuiteScript, diagnose failed scripts - all from plain English. Runs in a Chrome side panel on your existing NetSuite session. No setup, no API keys. Read-only by default with granular controls. Tasks that take a developer an hour take two minutes.
+**产品网站**: [立即访问](https://www.producthunt.com/r/IBTY6MB6YJSG7P?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/mokubot?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![MokuBot](https://ph-files.imgix.net/db601824-9763-404f-b58b-2a2b89ed7dfa.jpeg?auto=format)
+
+**关键词**：API
+**票数**: 🔺12
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [13. Consilience](https://www.producthunt.com/products/consilience?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：A personal Palantir that’s as easy to use as Obsidian
+**介绍**：Build Your Real Second Brain (Ontology + Obsidian + Agent) A personal Palantir that’s as easy to use as Obsidian. Write Markdown documents or import existing content to build a knowledge graph, then work with an AI agent powered by integrated GraphRAG
+**产品网站**: [立即访问](https://www.producthunt.com/r/3PDQWJOAJ5AWOX?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/consilience?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Consilience](https://ph-files.imgix.net/7145930f-67f8-4224-8ec4-e1f10c9f1521.png?auto=format)
+
+**关键词**：Agent, RAG
+**票数**: 🔺12
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [14. Instantly get a personal California doc!](https://www.producthunt.com/products/instantly-get-a-personal-california-doc?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Resonant Health connects you to your own primary doc 24/7 
+**介绍**：Find a primary care physician you’ll actually want to keep. Resonant connects Southern California patients with exceptional physicians—only Stanford- and Harvard-trained doctors—who use AI to spend less time on paperwork and more time with you. Get personalized, relationship-centered care, longer visits, and direct access designed to help you stay healthy, not just treat illness.
+**产品网站**: [立即访问](https://www.producthunt.com/r/3NU35Z3EUG3Z5P?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/instantly-get-a-personal-california-doc?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Instantly get a personal California doc!](https://ph-files.imgix.net/19918a4f-29ee-40eb-8de4-178ca1a71328.jpeg?auto=format)
+
+**关键词**：
+**票数**: 🔺11
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [15. Donate a Brush Stroke](https://www.producthunt.com/products/donate-a-brush-stroke?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Donate one stroke. Create art from everyone’s.
+**介绍**：Donate a handmade brush stroke to a shared collection, then turn strokes from different people into unexpected collaborative art. Choose colors, fading, tapering and paint-like tone variation, collect your favorite results in a 4×4 grid, and download high-resolution 4000×4000 artwork.
+**产品网站**: [立即访问](https://www.producthunt.com/r/CK7HC4YSQK2ETT?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/donate-a-brush-stroke?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![Donate a Brush Stroke](https://ph-files.imgix.net/f9f6c9b9-af56-44bb-be80-349159f0d4d3.png?auto=format)
+
+**关键词**：
+**票数**: 🔺11
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [16. AI Interviewer](https://www.producthunt.com/products/ai-interviewer-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：Practice English job interviews with AI. Free, no sign-up.
+**介绍**：Most interview-prep tools are paid or make you sign up and configure before you can practice anything. AI Interviewer strips that away: upload your CV, and the AI reads it, detects your role and level, and builds a realistic interview from your actual experience — not a generic question bank. You answer by speaking out loud, each question read aloud like a real interview, then get a scored report. No account, no payment, no setup. Free, 5 interviews/day.
+**产品网站**: [立即访问](https://www.producthunt.com/r/KY3R6SQHYRLQDN?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/ai-interviewer-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![AI Interviewer](https://ph-files.imgix.net/b2cdb1b0-107d-4c06-966d-cefab082ec35.png?auto=format)
+
+**关键词**：
+**票数**: 🔺11
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
+## [17. AI Pixel Art Generator](https://www.producthunt.com/products/sprite-fusion-pixel-art-generator?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**标语**：The professional AI pixel art generator for game developers
+**介绍**：Create professional quality pixel art, character spritesheets, and animations, then edit and export game-ready assets from your browser.
+**产品网站**: [立即访问](https://www.producthunt.com/r/SEOLWICKLMJZ26?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+**Product Hunt**: [View on Product Hunt](https://www.producthunt.com/products/sprite-fusion-pixel-art-generator?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+CreekStone-Search+%28ID%3A+281174%29)
+
+![AI Pixel Art Generator](https://ph-files.imgix.net/4529278d-89f1-482a-a40b-3363ce9b987f.png?auto=format)
+
+**关键词**：
+**票数**: 🔺11
+**是否精选**：否
+**发布时间**：2026年07月10日 PM03:01 (北京时间)
+**评分**：0
+
+---
+
