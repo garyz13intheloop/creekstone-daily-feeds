@@ -1,0 +1,861 @@
+# arXiv AI 论文日报 | 2026-10-08
+
+> 共 30 篇论文，由AI自动总结
+
+## 📑 目录
+
+- [cs.CV](#csCV) (11 篇)
+- [cs.LG](#csLG) (8 篇)
+- [cs.AI](#csAI) (8 篇)
+- [cs.CL](#csCL) (3 篇)
+
+---
+
+## cs.AI
+
+## [1. RoboJEPA: Scaling Robotic Latent World Models](https://arxiv.org/abs/2610.10515v1)
+
+**作者**：Artem Zholus, Nicolas Beltran-Velez, Jianhao Yuan 等 12 位作者  
+**分类**：cs.AI, cs.RO  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Latent world models have shown a remarkable ability to predict future states and to plan in the real world. In practice, however, we lack a principled way to estimate how their capabilities scale with model size, data, and compute, an open problem that slows progress in the field. In this work we present RoboJEPA, a world model based on the Joint Embedding Predictive Architecture (JEPA) and trained on a large-scale dataset spanning 12 robotic embodiments. We show that RoboJEPA's imagination error, the error of its latent rollouts, follows a second-order power law in compute, allowing us to predict model quality well beyond the scale at which the law is fit. We further show that downstream robotic planning performance improves predictably with compute, and that imagination error is strongly correlated with it, making it a reliable proxy for real-robot evaluation. Finally, we demonstrate that latent world models can be deployed zero-shot as robotic agents, planning toward a single goal image to solve tasks requiring long-horizon planning on real hardware. We release all model checkpoints together with our training and robot deployment code. To our knowledge, this is the first work to establish scaling laws for multi-embodiment robotic world models trained on real robot data, and RoboJEPA, at 8B parameters, is the largest JEPA predictor model trained to date.
+
+### 🤖 AI 总结
+
+**一句话总结**：Latent world models have shown a remarkable ability to predict future states and to plan in the real world. In practice, however, we lack a principled way to estimate how their capabilities scale with...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：RoboJEPA, Scaling, Robotic, Latent, World, Models, have, shown
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10515v1) | [下载PDF](https://arxiv.org/pdf/2610.10515v1.pdf)
+
+---
+
+## [2. SciExam for ENSO: Can AI Agents Build Climate Models?](https://arxiv.org/abs/2610.10513v1)
+
+**作者**：Yinling Zhang, Langchen Liu, Dongbin Xiu 等 7 位作者  
+**分类**：cs.AI, cs.LG, physics.ao-ph  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Language-model agents are increasingly asked to carry out open-ended scientific research, yet their results are usually graded against a known answer, a rubric, or a language-model reviewer, none of which can tell whether a new scientific model is valid. The AI Science Exam for El Nino-Southern Oscillation (SciExam for ENSO) is a benchmark in which agents build low-order stochastic models of ENSO, the dominant mode of interannual climate variability, from real observations. Within a six-hour budget, agents process the observations, write their own diagnostics, which are then frozen, and develop a model using only these diagnostics as feedback. Hidden graders then test whether the model reproduces ENSO's statistics, recovers unobserved variables, and forecasts held-out years, and score a published model in the same way. Across twelve agent systems, six produce models that score higher than the published model, mainly through better reconstruction and forecasting. The simplified forms of the stronger models are each compatible with one of the two competing explanations of ENSO's warm-cold asymmetry, an open debate that the task never mentions. Controlled runs of the top system under varied information suggest that its scores do not come from recalling the dated observational record and that the information it receives shapes how it builds its model. SciExam for ENSO can thus evaluate agent research where no answer is known, and the results suggest that agents can already build competitive models whose structures bear on questions that scientists still debate.
+
+### 🤖 AI 总结
+
+**一句话总结**：Language-model agents are increasingly asked to carry out open-ended scientific research, yet their results are usually graded against a known answer, a rubric, or a language-model reviewer, none of w...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Agent, SciExam, ENSO, Can, Build, Climate, Models?, Language-model
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10513v1) | [下载PDF](https://arxiv.org/pdf/2610.10513v1.pdf)
+
+---
+
+## [3. RECAST: Learning to Compute the Right Context through Adaptive Evidence Routing](https://arxiv.org/abs/2610.10507v1)
+
+**作者**：Yilun Hao, Krishna Sayana, Isabella Ye 等 7 位作者  
+**分类**：cs.AI  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Large language models are increasingly applied to tasks grounded in long, heterogeneous information sources. Conventional Retrieval-Augmented Generation (RAG) relies on fixed similarity-based retrieval, while agentic variants adapt queries and tool use but remain largely retrieval-centric. However, in many tasks, the evidence required for a solution is not explicitly present in any single source item. Instead, it must be derived through filtering, aggregation, or computation across multiple source items. In this work, we introduce RECAST (Routing Evidence through Computation, Access, and Synthesized Tools), a learned framework that formulates evidence construction as a sequential decision process over heterogeneous retrieval and computation operations, allowing evidence to be actively derived rather than merely retrieved. A lightweight RouterLM iteratively selects and formulates primitive operations or specifies customized operations for a frozen CompilerLM to translate into executable code. Once it judges the evidence sufficient, RouterLM passes the accepted evidence to a frozen AnswerLM to produce the final solution. We train RouterLM with supervised fine-tuning (SFT) followed by group relative policy optimization (GRPO). Across six heterogeneous benchmark families, RECAST achieves a mean success rate of 75.6%, outperforming the strongest large-model baseline by 15.9%. Moreover, training enables the Qwen3.5-9B RouterLM to outperform a training-free Gemini 3.5 Flash RouterLM by 5.0%. On three held-out benchmarks, RECAST improves over the strongest baseline by 15.0% on average, demonstrating strong zero-shot generalization across tasks and heterogeneous source representations.
+
+### 🤖 AI 总结
+
+**一句话总结**：Large language models are increasingly applied to tasks grounded in long, heterogeneous information sources. Conventional Retrieval-Augmented Generation (RAG) relies on fixed similarity-based retrieva...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：RECAST, Learning, Compute, Right, Context, through, Adaptive, Evidence
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10507v1) | [下载PDF](https://arxiv.org/pdf/2610.10507v1.pdf)
+
+---
+
+## [4. Validity Without Ground Truth: What Stated-Preference Economics Offers the Evaluation of Language Models](https://arxiv.org/abs/2610.10506v1)
+
+**作者**：Daniel Robert Kling Alexander, Catherine Louise Kling  
+**分类**：cs.AI, cs.CL, econ.GN  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Many of the questions now put to large language models have no correct answer to score against: what a policy is worth, which option a user should choose, how to weigh competing values. Stated-preference economics has faced this problem for decades. It judges survey responses without knowing the true value, through a framework of validity and related concepts: content, construct, and criterion validity, reliability, incentive compatibility, and consequentiality. We argue that this framework is a general method for evaluating language models, and we set out what each concept means for LLM evaluation. We demonstrate the approach using a published water-quality stated preference economic valuation survey (Vossler et al. 2023) administered to six models. In this economic application, the validity tests take the form of predictions from economic theory: demand should slope down, and willingness to pay should respond to the scope of the good and to income. The tests separate the models sharply. Two older models fail the most basic test at a household income level of \$75,000, and the two newest pass every test of theoretical validity we can score, but diverge on convergent validity. Passing validity tests shows that a model's answers are coherent, not that they are correct.
+
+### 🤖 AI 总结
+
+**一句话总结**：Many of the questions now put to large language models have no correct answer to score against: what a policy is worth, which option a user should choose, how to weigh competing values. Stated-prefere...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Validity, Without, Ground, Truth, What, Stated-Preference, Economics, Offers
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10506v1) | [下载PDF](https://arxiv.org/pdf/2610.10506v1.pdf)
+
+---
+
+## [5. EmbodiedRSI: Active Continual Robot Learning Through Hypothesis-Guided Co-Evolution](https://arxiv.org/abs/2610.10498v1)
+
+**作者**：Python Song, Zhixuan Liang, Kelsey Fu 等 6 位作者  
+**分类**：cs.AI  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Robot foundation models provide strong visuomotor control, yet their performance can degrade when object positions or task instructions change. Further improvements often require post-training on substantial robot data, which can be costly to collect through methods such as teleoperation. Agentic harnesses can adapt around the model, but current self-evolving harnesses use robot trials inefficiently when deciding which code and skill changes to pursue. We introduce EmbodiedRSI, a self-evolving agentic harness that autonomously decides where to explore next and turns the resulting physical interaction into improved code and skills. EmbodiedRSI realizes this through a Fast-Slow Dual-System Architecture, in which competing code and skill hypotheses are maintained in a Hypothesis Graph. Value-of-Information Experiment Selection chooses physical experiments that can distinguish these hypotheses. Their outcomes guide Code-Skill Co-Evolution. The Slow System builds Hierarchical Memory, and Reward-Grounded Memory Learning selects effective memory according to their value for later Fast-System improvement. On RoboCasa365, EmbodiedRSI reaches 77.0% overall success and 71.3% on Composite-Unseen, compared with 40.1% for the best baseline. EmbodiedRSI also reaches 86.8% overall success on LIBERO-Pro. Beyond benchmark performance, EmbodiedRSI transfers zero-shot to real-world robot, achieving 71.3% overall success across multiple challenging tasks.
+
+### 🤖 AI 总结
+
+**一句话总结**：Robot foundation models provide strong visuomotor control, yet their performance can degrade when object positions or task instructions change. Further improvements often require post-training on subs...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：EmbodiedRSI, Active, Continual, Robot, Learning, Through, Hypothesis-Guided, Co-Evolution
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10498v1) | [下载PDF](https://arxiv.org/pdf/2610.10498v1.pdf)
+
+---
+
+## [6. Before They Can Solve: Predicting Post-Training Coding-Agent Performance from Base Models](https://arxiv.org/abs/2610.10478v1)
+
+**作者**：Tan Yu, Alexander Bukharin, Khushi Bhardwaj 等 22 位作者  
+**分类**：cs.AI, cs.SE  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+How can we predict which base checkpoint is worth an expensive round of agentic post-training? End-to-end pass@$K$ tests whether successful behavior already appears in a base model's distribution, but it is a poor fit for agentic coding: many base checkpoints cannot reliably produce the well-formed tool invocation required to complete a task end-to-end. Single-shot or short-horizon tasks avoid these tool-calling failures by collapsing a multi-step interaction into a fixed prompt and a single patch, but they sidestep the core capability we care about: maintaining coherent state over many tool-using steps as the repository evolves. To bridge this gap, we treat successful post-trained agent trajectories as a lookahead signal of base-model potential. Replaying each trajectory and rerunning tests after every code-changing step identifies the decisive step: the first step whose cumulative patch flips the repository from failing to passing, certifying that the recorded action solves the task given the prior context. Motivated by a coverage principle for agentic traces, we build three screens at this step that do not require a base checkpoint to drive the harness from a cold start: (i) Decisive-Action BPB (bits per byte) measures the probability mass on the certified action, (ii) Patch MCQ tests the checkpoint's choice between that action and alternatives rejected by the same verifier, and (iii) prefix-conditioned pass@$K$ evaluates support for functionally-correct generations and credits any continuation that the tests accept. Across ten pairs of public base and post-trained models, all three screens rank the cohort in close agreement with post-trained SWE-bench Verified pass@$1$. As our methods need only a benchmark's successful trajectories and its verifier, they can be applied to turn future agentic coding benchmarks into base-model evaluations.
+
+### 🤖 AI 总结
+
+**一句话总结**：How can we predict which base checkpoint is worth an expensive round of agentic post-training? End-to-end pass@$K$ tests whether successful behavior already appears in a base model's distribution, but...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Before, They, Can, Solve, Predicting, Post-Training, Coding-Agent, Performance
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10478v1) | [下载PDF](https://arxiv.org/pdf/2610.10478v1.pdf)
+
+---
+
+## [7. RunningTab: Direct Workspace Interaction with Environment-Side Tabs](https://arxiv.org/abs/2610.10444v1)
+
+**作者**：Jinheon Baek, Soyeong Jeong, Yumin Choi 等 5 位作者  
+**分类**：cs.AI, cs.CL  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Much knowledge work produces new deliverables from files a workspace already holds, and LLM agents are beginning to take such work over. Through direct corpus interaction, an agent can search and read any of those files from a terminal with no indexing, and producing a deliverable from many of them in this way is what we call direct workspace interaction (DWI). Reaching the files, however, is only half the task: nothing keeps track of what the task asks for, what has been read, and what was listed but never opened, all of which slip through the context window without leaving a trace, so an agent may extract a figure and still deliver a report without it. To address this, we present RunningTab, a framework that equips direct workspace interaction with an environment-side tab: a per-task record of what the task still owes, kept by the environment alongside the agent. Specifically, the agent adds its requirements, while the environment records every file read as an excerpt with its provenance and every listed but unopened file as a candidate; the agent can then see each requirement beside its best-matching excerpts and top unopened candidates, resolve it against matching content or set it aside with a reason, and, should it try to finish with requirements still open, receive them in a finish check. We validate RunningTab on three benchmarks with three LLMs, where it consistently outperforms plain DWI and baselines that keep the record in the model, while its tab usually holds the values a deliverable needs once seen.
+
+### 🤖 AI 总结
+
+**一句话总结**：Much knowledge work produces new deliverables from files a workspace already holds, and LLM agents are beginning to take such work over. Through direct corpus interaction, an agent can search and read...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：RunningTab, Direct, Workspace, Interaction, Environment-Side, Tabs, Much, knowledge
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10444v1) | [下载PDF](https://arxiv.org/pdf/2610.10444v1.pdf)
+
+---
+
+## [8. SOTA: Stock Options Trading Agents Guided by Option-Implied Return Distributions](https://arxiv.org/abs/2610.10407v1)
+
+**作者**：Yizhen Xie, Mengyang Liu  
+**分类**：cs.AI, cs.LG, q-fin.PM, q-fin.TR  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+As option markets grow and AI advances, agentic systems for option trading are gaining increasing attention. Language-model-based agents can reason over contextual information such as news, but option trading presents a particularly challenging decision problem: a single stock can have thousands of contracts, and the agent must decide both which contracts to trade and how to combine them. Existing approaches often sidestep this complexity by restricting the policy to a fixed strategy structure, such as a straddle, limiting their ability to switch strategies as market conditions change. We present SOTA (Stock Options Trading Agents), an agentic trading framework for structured option-strategy selection. SOTA abstracts the large option universe into strategy-level decisions while deterministic resolvers handle portfolio implementation. We develop SOTA by post-training Qwen3.8-27B with supervised fine-tuning followed by reinforcement learning. SOTA is evaluated on options on nine large-cap U.S. equities and SPY against rule-based and machine-learning strategy selectors in the same trading environment. Over a six-month out-of-sample period, SOTA earns an 18.3% total return with a Sharpe ratio of 1.60 and a maximum drawdown of 8.96%. We also document an asymmetric role of news: news improves frontier-teacher trajectories, but retaining news during reinforcement learning reduces out-of-sample return from 18.3% to -2.7%.
+
+### 🤖 AI 总结
+
+**一句话总结**：As option markets grow and AI advances, agentic systems for option trading are gaining increasing attention. Language-model-based agents can reason over contextual information such as news, but option...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Agent, SOTA, Stock, Options, Trading, Guided, Option-Implied, Return
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10407v1) | [下载PDF](https://arxiv.org/pdf/2610.10407v1.pdf)
+
+---
+
+## cs.CL
+
+## [9. Your Prompt Should Do More: Effects of Retrieval Instructions in Embedding Models](https://arxiv.org/abs/2610.10508v1)
+
+**作者**：Amanda Myntti, Jenna Kanerva, Veronika Laippala 等 4 位作者  
+**分类**：cs.CL  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Prompted embedding models have recently received increasing attention, particularly for retrieval, where detailed retrieval instructions are provided as part of the retrieval prompt. Several new datasets and studies have examined this setting, showing that the current embedding models often struggle to follow such instructions reliably. In this paper, we study the mechanism of how instructions actually affect the representations of retrieval queries in asymmetric retrieval tasks. We show that models can fail to follow even simple task instructions when query-side distractors are included in the evaluation. We hypothesize that this behavior is driven by the training setup of current embedding models and their evaluation, and show that fine-tuning with added query-side distractors leads to substantial improvements, with minimal effect on other tasks.
+
+### 🤖 AI 总结
+
+**一句话总结**：Prompted embedding models have recently received increasing attention, particularly for retrieval, where detailed retrieval instructions are provided as part of the retrieval prompt. Several new datas...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Do, of, Prompt, Should, More, Effects, Retrieval, Instructions
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10508v1) | [下载PDF](https://arxiv.org/pdf/2610.10508v1.pdf)
+
+---
+
+## [10. PHRBench: A Behavioral Evaluation of Post-Hallucination Reasoning in LLMs](https://arxiv.org/abs/2610.10455v1)
+
+**作者**：Linghao Meng, Feng He, Xuan Yang 等 8 位作者  
+**分类**：cs.CL, cs.AI  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Hallucinated information can propagate through multi-stage LLM systems and become part of the context for subsequent reasoning. Existing studies of post-hallucination reasoning (PHR) mainly characterize changes in final outcomes and aggregate reasoning dynamics, leaving how models resolve hallucinated premises at the response level insufficiently understood. In this work, we introduce PHRBench, a controlled benchmark for behaviorally structured PHR across four domains and 18 large language models. PHRBench characterizes each reasoning trajectory independently of final-answer correctness through Hallucination Compliance, Hallucination Avoidance, and Heuristic Correction, and defines an insightful trajectory as successful correction that ultimately reaches the correct answer. Across 4820 controlled instances, we find that successful recovery remains relatively rare and is associated with more frequent belief updates along the reasoning trajectory. We further find that properties of the hallucinated prompt contain substantial predictive signal for successful recovery, with a lightweight predictor achieving an AUROC of 0.847. These findings provide a behavioral view of post-hallucination reasoning, characterizing how LLMs resolve erroneous context and when successful recovery is likely to occur.
+
+### 🤖 AI 总结
+
+**一句话总结**：Hallucinated information can propagate through multi-stage LLM systems and become part of the context for subsequent reasoning. Existing studies of post-hallucination reasoning (PHR) mainly characteri...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：of, LLM, PHRBench, Behavioral, Evaluation, Post-Hallucination, Reasoning, Hallucinated
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10455v1) | [下载PDF](https://arxiv.org/pdf/2610.10455v1.pdf)
+
+---
+
+## [11. CoTrace: Data Recipes for Training Terminal Agents with Harness-Model Co-Evolution](https://arxiv.org/abs/2610.10426v1)
+
+**作者**：Jixuan Chen, Jiaxin Zhang, Qinyuan Ye 等 14 位作者  
+**分类**：cs.CL  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Terminal-agent capability depends jointly on model weights and the runtime harness that formats prompts, binds tools, and handles error recovery. Existing harness-model co-evolution approaches improve both components, yet often treat trajectories produced during harness search as an undifferentiated replay buffer. This practice overlooks that a trajectory's value for model training depends on the harness under which it was generated. To systematically analyze this interface, we establish an alternating co-evolution framework that decouples harness search and policy training through component-wise promotion decisions. Within this framework, we introduce CoTrace, a harness-aware data recipe that explicitly governs trajectory routing, provenance matching, and curriculum refresh. Under CoTrace, recurring execution failures guide harness synthesis, while policy training is strictly conditioned on verified rollouts matched to the adopted runtime for supervised fine-tuning (SFT) or fresh online interactions for reinforcement learning (RL). On the Tmax promotion split, CoTrace advances Qwen3.5-9B from 78 to 88 solved tasks under supervised fine-tuning while an online reinforcement variant reaches 90. Specifically, a compact harness-matched corpus produces steady model gains at substantially lower compute than much larger corpora pooled across sibling harnesses. Furthermore, evaluations on Terminal-Bench 2.1 and SWE-bench Lite show that out-of-distribution transfer depends fundamentally on harness compatibility, where maintaining consistency between training and evaluation runtimes prevents procedural execution breakdowns observed under foreign scaffolds.
+
+### 🤖 AI 总结
+
+**一句话总结**：Terminal-agent capability depends jointly on model weights and the runtime harness that formats prompts, binds tools, and handles error recovery. Existing harness-model co-evolution approaches improve...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Agent, CoTrace, Data, Recipes, Training, Terminal, Harness-Model, Co-Evolution
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10426v1) | [下载PDF](https://arxiv.org/pdf/2610.10426v1.pdf)
+
+---
+
+## cs.CV
+
+## [12. Tetris3D: 3D Scene Generation With Objects That Fit Together](https://arxiv.org/abs/2610.10539v1)
+
+**作者**：Jaeyeong Kim, Jinhyuk Jang, Jongmin Lee 等 5 位作者  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a scene. Existing methods often generate objects independently or couple them implicitly, providing limited guidance for ensuring fine-grained spatial compatibility between neighboring objects that interact with one another. To address this, we explicitly condition the generation of each object on the geometry of surrounding objects and their physical relationships, guiding its shape and pose to remain geometrically and physically plausible within the scene. Moreover, we introduce ComOb, a physics simulation-based dataset of 1.2M scenes featuring physical interactions across diverse object categories, with per-object meshes and pairwise physical relation annotations. Comprehensive experiments on synthetic and realworld scenes show that Tetris3D recovers coherent object shapes and poses even when interacting regions are occluded, and achieves state-of-the-art performance in both generation quality and physical stability.
+
+### 🤖 AI 总结
+
+**一句话总结**：We propose Tetris3D, a generative framework for single-image 3D scene reconstruction that recovers objects which are physically and geometrically coherent as a scene. Existing methods often generate o...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：3D, We, Tetris3D, Scene, Generation, Objects, Fit, Together
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10539v1) | [下载PDF](https://arxiv.org/pdf/2610.10539v1.pdf)
+
+---
+
+## [13. Never Look Back: Understanding Persistence in 3D Object Memory from Egocentric Videos](https://arxiv.org/abs/2610.10538v1)
+
+**作者**：Shravan Chaudhari, William Paul, Suchi Saria 等 5 位作者  
+**分类**：cs.CV, cs.AI, cs.RO  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+As we move through the world and carry out everyday tasks, we encounter objects that may become relevant only later. We are capable of recalling where we left something or what was inside a container, even without knowing we would need it later. Here, we study how an embodied assistant can build a similar memory from egocentric videos, by observing a person's day-to-day activities. We present Ledger, a persistent 3D object memory that combines object locations, their histories, and contextual descriptions. It associates observations across the recording and retains objects after they leave the view, including those the person never touches. It clusters each object's observations by resting locations and records a move only after repeated evidence, reducing the effect of localization noise. Short descriptions preserve details such as an object's contents or supporting surface. It saves these records to later answer spatial questions without having to access the original images or video. Our memory raises HD-EPIC accuracy from 29.7% to 42.6%, UCS-Bench accuracy from 33.8% to 38.5% and localizes Ego4D objects with a 0.99 m median error on returned predictions. Our analyses identify complementary roles for temporal persistence, contextual descriptions, and retrieval. Our study on 100 stitched streams of multiple scenes each further exposes failures in both retrieval and construction. Per-scene construction partially recovers the performance lost across scene changes compared to that of single scene streams.
+
+### 🤖 AI 总结
+
+**一句话总结**：As we move through the world and carry out everyday tasks, we encounter objects that may become relevant only later. We are capable of recalling where we left something or what was inside a container,...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：3D, Never, Look, Back, Understanding, Persistence, Object, Memory
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10538v1) | [下载PDF](https://arxiv.org/pdf/2610.10538v1.pdf)
+
+---
+
+## [14. Video-Conditioned Generative Joint 2D-3D Hand Motion Recovery](https://arxiv.org/abs/2610.10512v1)
+
+**作者**：Chen Xu, Yunqi Li, Binbin Huang 等 6 位作者  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Recovering faithful 3D hand motion from video remains challenging due to frequent occlusions and incomplete visual observations, which make frame-wise pose estimates unreliable and temporally inconsistent. To address this problem, we propose JoHan, a unified generative framework that recovers hand motion directly from video sequences without relying on intermediate per-frame pose predictions. Trained from scratch, our model jointly generates aligned 2D and 3D local hand pose sequences by learning their temporal dynamics and cross-representation correspondence. The generated 2D trajectories exploit direct spatial and temporal cues from the 2D images to guide the following generative 3D motion reconstruction, while the learned motion prior promotes temporal consistency. Their learned 2D-3D correspondence further enables recovery of the hand's global position and orientation relative to the camera. Extensive experiments on challenging benchmarks demonstrate significantly improved accuracy and speed in local hand-pose and camera-space reconstruction. Notably, our method captures much better hand-motion dynamics, producing significantly smoother motion than previous methods while maintaining high per-frame pose accuracy.
+
+### 🤖 AI 总结
+
+**一句话总结**：Recovering faithful 3D hand motion from video remains challenging due to frequent occlusions and incomplete visual observations, which make frame-wise pose estimates unreliable and temporally inconsis...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：2D-3D, Video-Conditioned, Generative, Joint, Hand, Motion, Recovery, Recovering
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10512v1) | [下载PDF](https://arxiv.org/pdf/2610.10512v1.pdf)
+
+---
+
+## [15. Insights from Autoresearch for Solar Panel Segmentation](https://arxiv.org/abs/2610.10491v1)
+
+**作者**：Justinas Lekavicius, Kursat Komurcu, Valentas Gruzauskas 等 4 位作者  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+This paper investigates AutoResearch, a protocol in which a coding language model edits a training program under a one-hour GPU budget and retains a change only if validation IoU improves. The protocol is applied to photovoltaic panel segmentation on a frozen real-image split, with DeepLabV3--ResNet-50 held fixed. Three campaigns of 24 experiments, using Gemma~4 12B, Qwen3-8B all improve their one-hour baselines, but retained modifications do not transfer across hardware. The Qwen3-8B configuration, trained on real images only, reaches a test IoU of 0.836 versus 0.833 for the reference GAN-augmented schedule. Research repository https://github.com/VU-AIML/automl4eo-autoresearch-segmentation.
+
+### 🤖 AI 总结
+
+**一句话总结**：This paper investigates AutoResearch, a protocol in which a coding language model edits a training program under a one-hour GPU budget and retains a change only if validation IoU improves. The protoco...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Insights, Autoresearch, Solar, Panel, Segmentation, paper, investigates, protocol
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10491v1) | [下载PDF](https://arxiv.org/pdf/2610.10491v1.pdf)
+
+---
+
+## [16. Label-free cell counting and viability prediction with brightfield imaging and deep learning](https://arxiv.org/abs/2610.10473v1)
+
+**作者**：Amir Reza Vazifeh, Christian Zeigler, Sornanathan Meyyappan 等 5 位作者  
+**分类**：cs.CV, q-bio.CB  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Cell viability assessment is a core requirement in cell culture systems, with critical applications in biopharmaceutical manufacturing and drug development. Conventionally, it is measured by adding membrane-impermeable dyes to a sample (a process called staining), which allows compromised cell membranes to be distinguished from intact ones. However, staining has several limitations: (a) chemical agents can perturb normal cellular processes of the cells being measured, (b) it is often ambiguous to assign viability to individual cells whose membrane integrity is only partially compromised. (c) photobleaching can undermine measurement accuracy over time when using fluorescent stains, and (d) staining cannot be performed in situ or in real time. Here, we show that (1) stained cells captured under brightfield imaging contain sufficient information to distinguish live and dead cells, and (2) cells captured under unstained brightfield imaging exhibit similar image features to their stained counterparts, enabling models trained on stained cells to generalize to unstained ones. We then report the development and validation of ViabiLens, an AI-assisted software for label-free cell viability analysis. The ViabiLens combines a cell detection model for localizing individual cells with a convolutional neural network (CNN) classifier for live/dead prediction, paired with an interactive UMAP-based viewer for visualizing and exploring individual cells across the sample. Evaluated on Chinese Hamster Ovary (CHO) cells spanning a wide range of viability conditions, ViabiLens achieves a mean absolute error of 2.68\% on unstained samples against fluorescence-based reference measurements. We also release a benchmark dataset for label-free cell viability analysis to facilitate future research, available at https://amirrezavazifeh.github.io/ViabiLens-Project-Page/.
+
+### 🤖 AI 总结
+
+**一句话总结**：Cell viability assessment is a core requirement in cell culture systems, with critical applications in biopharmaceutical manufacturing and drug development. Conventionally, it is measured by adding me...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Label-free, cell, counting, viability, prediction, brightfield, imaging, deep
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10473v1) | [下载PDF](https://arxiv.org/pdf/2610.10473v1.pdf)
+
+---
+
+## [17. MORCA: Offline-to-Online Reinforcement Learning for Adaptive Cache Reuse in Video Diffusion Acceleration](https://arxiv.org/abs/2610.10457v1)
+
+**作者**：Yuxiang Xiong, Ruiyan Wang, Wenqiang Wang 等 8 位作者  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Diffusion Transformers (DiTs) achieve remarkable performance in video synthesis, but their iterative denoising process suffers from high inference latency. To address this, caching has emerged as an effective acceleration strategy by capitalizing on inter-step redundancy during denoising. Existing dynamic caching methods typically estimate the error that cache reuse would introduce at each denoising step (step error) to guide cache decisions, whereas our concern is how much quality loss cache reuse would cause in the final generated video (terminal error). We show that step error does not directly correspond to terminal error and that latent information helps capture their relationship, thereby informing cache decisions. Moreover, existing threshold-based methods cannot provide precise speedup control, making it difficult to meet practical requirements for user-specified acceleration targets. To address these limitations, we introduce MORCA, a cache scheduling framework trained through offline-to-online reinforcement learning to make latent-aware reuse/recompute decisions under user-specified acceleration targets. Extensive experiments on different video generation models across multiple target acceleration ratios demonstrate that MORCA achieves better generation fidelity than state-of-the-art caching methods under comparable computational budgets. Code is available at https://github.com/x10ngyx/MORCA.
+
+### 🤖 AI 总结
+
+**一句话总结**：Diffusion Transformers (DiTs) achieve remarkable performance in video synthesis, but their iterative denoising process suffers from high inference latency. To address this, caching has emerged as an e...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：MORCA, Offline-to-Online, Reinforcement, Learning, Adaptive, Cache, Reuse, Video
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10457v1) | [下载PDF](https://arxiv.org/pdf/2610.10457v1.pdf)
+
+---
+
+## [18. ECHO: Embodied Camera Observations of Human Object Carrying](https://arxiv.org/abs/2610.10438v1)
+
+**作者**：Xuefei Sun, Lorin Achey, Kali Hamilton 等 7 位作者  
+**分类**：cs.CV, cs.RO  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Embodied and assistive agents must do more than recognize objects: they must reason about where an object belongs given the layout of an environment and the habits of the people who live in it. Progress on this problem has been limited, in part because no dedicated benchmark or dataset exists to define and evaluate it. Existing RGB-D scan datasets reconstruct static rooms without human activity, while human-object-interaction datasets capture motion without a navigable, fully reconstructed scene or a ground-truth notion of an object's natural destination. We introduce contextual object placement as a benchmark task: predicting an object's destination during an observed object-carrying episode. To support this task, we present Embodied Camera observations of Human Object carrying (ECHO), a large-scale synthetic dataset that pairs dense RGB-D scans of indoor scenes with recordings of an embodied human carrying everyday objects to context-appropriate destinations. ECHO is the first publicly available dataset to combine reconstructed scenes, human activity, natural language, and contextual-placement annotations. It comprises 3,805 human-annotated episodes across 159 floors of 115 HM3D scenes, involving 198 distinct objects. Each floor includes a complete RGB-D scan with human-annotated room labels and a surface list. Each episode provides synchronized RGB-D encounter clips; 6-DoF camera, human, and object trajectories; start and destination surfaces; an action caption; and a human-written context: a single sentence describing the inhabitant's routine that implies the destination without naming it. We evaluate contextual object placement using input-masked probes and an end-to-end baseline. Results show that no single input modality is sufficient, highlighting the need to jointly reason over scene structure, human activity, and contextual knowledge.
+
+### 🤖 AI 总结
+
+**一句话总结**：Embodied and assistive agents must do more than recognize objects: they must reason about where an object belongs given the layout of an environment and the habits of the people who live in it. Progre...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：of, ECHO, Embodied, Camera, Observations, Human, Object, Carrying
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10438v1) | [下载PDF](https://arxiv.org/pdf/2610.10438v1.pdf)
+
+---
+
+## [19. Detecting Adversarial Images through Response Profiles of Vision-Language Models](https://arxiv.org/abs/2610.10436v1)
+
+**作者**：Arash Vashagh, Roozbeh Razavi-Far  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Adversarial perturbations can alter the predictions of frozen vision-language models (VLMs) while leaving their confidence and image--text similarity patterns seemingly plausible. We investigate whether we can identify adversarial inputs based on the broader way an image interacts with a collection of general semantic prompts. Our detector summarizes these responses using category-level statistics, relationships among prompts, deviations from clean reference distributions, and stability under weak image transformations, producing a compact response profile that is classified by a lightweight model while the VLM remains fixed. We evaluate the approach on multiple public image datasets, several CLIP-style visual backbones, and a range of gradient-based, optimization-based, automated, and spatial attacks. The detector achieves strong discrimination in attack-specific settings and retains substantial performance when evaluated on attacks not seen during training. Under a controlled detector-specific protocol, the response-profile representation outperforms the evaluated embedding-geometry baselines. Additional analyses show that the feature groups provide complementary information and that the method remains effective under variations in the prompt configuration. We also examine inference cost and performance against detector-aware adaptive attacks. Overall, the results indicate that response patterns across semantic prompts provide a useful complementary signal for adversarial image detection in frozen VLMs.
+
+### 🤖 AI 总结
+
+**一句话总结**：Adversarial perturbations can alter the predictions of frozen vision-language models (VLMs) while leaving their confidence and image--text similarity patterns seemingly plausible. We investigate wheth...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：of, Detecting, Adversarial, Images, through, Response, Profiles, Vision-Language
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10436v1) | [下载PDF](https://arxiv.org/pdf/2610.10436v1.pdf)
+
+---
+
+## [20. SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](https://arxiv.org/abs/2610.10429v1)
+
+**作者**：Zihan Su, Junhao Zhuang, Yaowei Li 等 13 位作者  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Autoregressive video generation requires denoising the current frames while writing their key-value representations as context for future predictions. However, these two roles typically share parameters, and we find that their gradients exhibit distinct patterns and systematic negative alignment, hindering the joint optimization of visual quality and temporal consistency. We introduce Self Gradient Forcing Plus (SGF+), which assigns separate parameters to context writing and denoising while preserving their interaction through causal attention. Both roles are jointly optimized using the original generation objective without auxiliary losses, with context writing supervised through its contribution to future predictions. This simple change improves visual quality and long-horizon consistency over the evaluated baselines in both framewise and chunkwise generation, without additional video training data or a longer training horizon. Trained on only 5s rollouts, SGF+ supports continuous generation for up to 24 hours without long-video fine-tuning. These results highlight role-specific parameterization as an effective design principle for high-quality autoregressive video generation and native long-horizon extrapolation.
+
+### 🤖 AI 总结
+
+**一句话总结**：Autoregressive video generation requires denoising the current frames while writing their key-value representations as context for future predictions. However, these two roles typically share paramete...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：SGF+, Decoupling, Gradient, Flows, Autoregressive, Video, Generation, requires
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10429v1) | [下载PDF](https://arxiv.org/pdf/2610.10429v1.pdf)
+
+---
+
+## [21. GraphRectify: Graph-Based Transfer of Adversarial Example Detectors Across Neural Networks](https://arxiv.org/abs/2610.10423v1)
+
+**作者**：Arash Vashagh, Roozbeh Razavi-Far  
+**分类**：cs.CV  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Adversarial example detectors are often tied to the classifier backbone they were trained on, limiting reuse when the protected model is replaced or upgraded. Directly transferring such detectors across backbones is challenging because different networks generally produce incompatible internal representations. We propose GraphRectify, a graph-based framework for transferring adversarial image detectors across classifier backbones. GraphRectify learns a structured representation of intermediate classifier features and adapts representations from a new backbone to the detector learned on the original model, enabling detector reuse. We evaluate GraphRectify across multiple datasets, backbone architectures, and adversarial attacks, including detector-aware adaptive attacks that jointly target the classifier and detector. Across the complete evaluation matrix, GraphRectify achieves higher aggregate ROC-AUC than training a detector from scratch on the new backbone and the evaluated transfer ablations. The gains are particularly strong for transfers between different backbone families and when sufficient data are available. In contrast, training from scratch remains competitive in the most data-limited settings. These results show that adversarial detection knowledge can transfer effectively across heterogeneous classifier architectures rather than being relearned whenever the protected backbone changes.
+
+### 🤖 AI 总结
+
+**一句话总结**：Adversarial example detectors are often tied to the classifier backbone they were trained on, limiting reuse when the protected model is replaced or upgraded. Directly transferring such detectors acro...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：of, GraphRectify, Graph-Based, Transfer, Adversarial, Example, Detectors, Across
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10423v1) | [下载PDF](https://arxiv.org/pdf/2610.10423v1.pdf)
+
+---
+
+## [22. Rubix: Global Correspondence-Free Point Set Alignment through Assignment Geometry](https://arxiv.org/abs/2610.10408v1)
+
+**作者**：Subhransu S. Bhattacharjee, Dylan Campbell, Rahul Shome  
+**分类**：cs.CV, cs.CG, cs.LG, cs.RO, math.OC  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Procrustes-Wasserstein alignment jointly estimates a matching and rotation without supplied correspondences, but alternating minimization can stop at suboptimal solutions. Rubix solves the equally weighted planar problem globally under squared Euclidean loss. Each matching $σ$ of two centered $n$-point sets defines a complex correlation $z_σ=\sum_i\bar x_i y_{σ(i)}$. Their convex hull is the permutation polygon: supporting vertices give optimal matchings at fixed rotations, and the farthest vertex gives the global alignment. We prove the sharp bound of $n(n-1)$ vertices for $n\ge2$, answering Rote's rotation-assignment open problem. In exact arithmetic, assignment queries recover the polygon in $\mathcal O(n^5)$ operations. Assignment-based bounds extend the approach to three-dimensional rotations and partial matching at a supplied translation through branch-and-bound. On timed MPEG-7 shape pairs, Rubix attains every numerical reference value in 12 ms on average, 50 times faster than a rotation grid at the same accuracy. Its distances improve gravity-aligned matching of real 3D scans, shape retrieval and noisy crystal classification over alternating minimization.
+
+### 🤖 AI 总结
+
+**一句话总结**：Procrustes-Wasserstein alignment jointly estimates a matching and rotation without supplied correspondences, but alternating minimization can stop at suboptimal solutions. Rubix solves the equally wei...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Rubix, Global, Correspondence-Free, Point, Set, Alignment, through, Assignment
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10408v1) | [下载PDF](https://arxiv.org/pdf/2610.10408v1.pdf)
+
+---
+
+## cs.LG
+
+## [23. Decoupling Exploration from Optimization in RLVR](https://arxiv.org/abs/2610.10536v1)
+
+**作者**：Saif Punjwani, Micah Goldblum  
+**分类**：cs.LG, cs.AI, cs.CL  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Modern language models undergo reinforcement learning with verifiable rewards (RLVR) on top of already-trained checkpoints. A key promise of RLVR is the discovery of new reasoning strategies. In principle, a model can sample novel ideas absent from its prior training data. In practice, however, augmenting RLVR with strong novelty incentives has seen limited success and can degrade model quality. Because verifiable rewards supervise only a narrow slice of the model's knowledge and behavior, such degradations are difficult to recover from. Instead, we decouple exploration from optimization in a framework we call Exploration-Distillation (ExpDis). We train one or more explorer policies with a novelty bonus in the reward, filter their trajectories for correctness and quality, and distill them into a separate student policy. The student policy is then trained without a novelty bonus. We repeat the above procedure for several rounds, alternating between exploration and optimization. This decoupling allows us to aggressively scale exploration without degrading the student policy. Across seven mathematical reasoning benchmarks and two model families, ExpDis outperforms DAPO at the same wall-clock budget. Moreover, we observe improved pass@$k$ scaling, indicating that ExpDis produces models that generate more diverse correct solutions.
+
+### 🤖 AI 总结
+
+**一句话总结**：Modern language models undergo reinforcement learning with verifiable rewards (RLVR) on top of already-trained checkpoints. A key promise of RLVR is the discovery of new reasoning strategies. In princ...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Decoupling, Exploration, Optimization, RLVR, Modern, language, models, undergo
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10536v1) | [下载PDF](https://arxiv.org/pdf/2610.10536v1.pdf)
+
+---
+
+## [24. Distilling Graph Geometry: Knowledge Gap from GNNs to MLPs](https://arxiv.org/abs/2610.10520v1)
+
+**作者**：Zhewei Chen, Hao Zhu, Jiaojiao Jiang 等 4 位作者  
+**分类**：cs.LG  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+GNN-to-MLP distillation aims to retain the predictive accuracy of a message-passing teacher while deploying a graph-free MLP at inference. Existing methods mainly transfer node-wise predictions or use confidence-based reweighting, but they do not specify where the student should preserve the teacher's graph-induced geometry. We show that this omission leads to two spectral failure modes in the student's representation space. On sparse graphs, the student suffers from spectral underfit, missing high-energy teacher directions concentrated near boundary regions. On dense graphs, it suffers from spectral overfit, retaining spurious directions that the teacher has collapsed through aggregation. Motivated by an energy-weighted teacher-student alignment objective, we propose Graph Geometry-aware MLP (G^2MLP), a training-time distillation framework guided by Ollivier-Ricci curvature. Curvature identifies where the two spectral errors concentrate and is used to allocate supervision between prediction-level and representation-level alignment. The deployed model remains a standard MLP and requires no graph access at inference. Across node-classification benchmarks, G^2MLP consistently improves over graph-free distillation baselines, reduces the teacher-student rank gap in both regimes, and transfers without architectural changes to Graph Transformer teachers and link prediction.
+
+### 🤖 AI 总结
+
+**一句话总结**：GNN-to-MLP distillation aims to retain the predictive accuracy of a message-passing teacher while deploying a graph-free MLP at inference. Existing methods mainly transfer node-wise predictions or use...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Distilling, Graph, Geometry, Knowledge, Gap, GNNs, MLPs, GNN-to-MLP
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10520v1) | [下载PDF](https://arxiv.org/pdf/2610.10520v1.pdf)
+
+---
+
+## [25. Why Forget-Only Unlearning Needs Memorization](https://arxiv.org/abs/2610.10519v1)
+
+**作者**：Luka Radić, Vikrant Singhal, Amartya Sanyal  
+**分类**：cs.LG, cs.IT, stat.ML  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Machine unlearning asks for a deletion algorithm whose output is close to retraining from scratch without the selected forget examples. In this work, we study forget-only unlearning, where the deletion algorithm receives only the trained model and the examples to forget, with no retained data or extra training information. We ask whether forget-only unlearning is always possible. We first show that this depends on the learning method: different datasets can produce the same trained model but require very different outputs after the same examples are removed. Using this observation, we derive lower bounds on how accurately unlearning can match retraining and instantiate them for several standard learning algorithms. We then ask what must be true when forget-only unlearning succeeds. To this end, we derive lower bounds on what an algorithm must memorize about the training data to handle arbitrary deletion requests. For simple threshold learners, the required information can be as large as the entire dataset, even though ordinary training keeps only one boundary point. Overall, our results show that information discarded during ordinary learning may be needed later for deletion, so models designed for forget-only unlearning may need to retain more information than standard training does.
+
+### 🤖 AI 总结
+
+**一句话总结**：Machine unlearning asks for a deletion algorithm whose output is close to retraining from scratch without the selected forget examples. In this work, we study forget-only unlearning, where the deletio...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Why, Forget-Only, Unlearning, Needs, Memorization, Machine, asks, deletion
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10519v1) | [下载PDF](https://arxiv.org/pdf/2610.10519v1.pdf)
+
+---
+
+## [26. Oracle-Efficient and Parameter-Free Agnostic Smoothed Online Learning](https://arxiv.org/abs/2610.10499v1)
+
+**作者**：Sasha Voitovych, Adam Block, Alexander Rakhlin 等 4 位作者  
+**分类**：cs.LG, stat.ML  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Online learning is an attractive framework in many domains because it permits well-defined learning even when data are dependent or chosen adversarially. This generality, however, comes at a steep price, introducing significant statistical and computational barriers. Recently, smoothed online learning has emerged as a promising framework that interpolates between the fully adversarial and fully stochastic settings by assuming that the conditional law of each covariate has density at most $1/σ$ with respect to some fixed base measure $μ$, and it is known to match the statistical and computational guarantees of classical learning while still allowing for much of the flexibility of online learning. However, existing oracle-efficient algorithms require either (i) sampling access to the base measure $μ$ or (ii) labels that are perfectly predicted by a fixed hypothesis. Both assumptions limit the applicability of these algorithms, in contrast to statistical learning, where empirical risk minimization (ERM) learns efficiently in the agnostic setting without any knowledge of the data distribution. We show that neither assumption is necessary, giving the first oracle-efficient algorithm that achieves sublinear regret in the agnostic setting without knowledge of $μ$. Our algorithm, based on Gaussian Follow-The-Perturbed-Leader, is parameter-free: it requires no knowledge of $μ$, the smoothing parameter $σ$, or the horizon $T$, and it achieves regret $\widetilde O(d\sqrt{T/σ})$ for binary classes of VC dimension $d$ with a single call to an ERM oracle per round, which is optimal up to a $\sqrt{d}$ factor. En route to establishing the regret bound, we introduce several new techniques that may be of independent interest.
+
+### 🤖 AI 总结
+
+**一句话总结**：Online learning is an attractive framework in many domains because it permits well-defined learning even when data are dependent or chosen adversarially. This generality, however, comes at a steep pri...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：an, Oracle-Efficient, Parameter-Free, Agnostic, Smoothed, Online, Learning, attractive
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10499v1) | [下载PDF](https://arxiv.org/pdf/2610.10499v1.pdf)
+
+---
+
+## [27. Two-Level Softmax Sampling Done Right: Correcting Bias from Size Imbalance and Dispersion](https://arxiv.org/abs/2610.10483v1)
+
+**作者**：Walid Bendada, Guillaume Salha-Galvan  
+**分类**：cs.LG, cs.IR, stat.ML  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Sampling from a softmax distribution is a fundamental operation in machine learning, but its linear complexity in the number of items makes exact sampling impractical at scale. Two-level softmax (2LS) sampling is a popular alternative enabling sublinear-time sampling. Assuming items are partitioned into clusters, 2LS first samples a cluster and then an item within it. In this paper, we show that, despite its advantages, 2LS introduces systematic and undesirable sampling biases, which arise from misweighting clusters by ignoring both cluster size imbalance and intra-cluster similarity dispersion. We propose two sampling methods, Size-Corrected 2LS (S-2LS) and Size- and Dispersion-Corrected 2LS (SD-2LS), which correct these biases and provide provably better softmax approximations with negligible to non-existent computational overhead. In-depth experiments on five large-scale datasets validate the improved sampling properties of our methods. We recommend their consistent use in place of standard 2LS in future work.
+
+### 🤖 AI 总结
+
+**一句话总结**：Sampling from a softmax distribution is a fundamental operation in machine learning, but its linear complexity in the number of items makes exact sampling impractical at scale. Two-level softmax (2LS)...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Two-Level, Softmax, Sampling, Done, Right, Correcting, Bias, Size
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10483v1) | [下载PDF](https://arxiv.org/pdf/2610.10483v1.pdf)
+
+---
+
+## [28. Composing What Each Teacher Learned: Multi-Teacher On-Policy Distillation through Teacher-Relative Shifts](https://arxiv.org/abs/2610.10460v1)
+
+**作者**：Hejian Sang, Zhengze Zhou, Shayan Mohajer Hamidi 等 6 位作者  
+**分类**：cs.LG, cs.AI  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Multi-teacher on-policy distillation (MOPD) is used in two settings. In common-domain composition, several teachers score each student rollout from one prompt domain and their signals form a single target; in routed-domain distillation, prompts from different domains are assigned to the corresponding specialist. Both settings usually transfer each teacher's endpoint policy, which mixes what post-training changed with preferences inherited from the teacher's base. We introduce $Δ$-MOPD, which transfers each teacher's teacher-minus-base logit shift re-anchored at the student's frozen initialization, and compare it with endpoint supervision in both settings while holding teacher selection fixed. We first expose the mechanism that impedes endpoint transfer: inherited base pull can exceed the post-training shift. Removing it reduces the teacher-term norm ratio and target--student KL.   Across our experiments, the results suggest that shift targets are particularly useful when teacher signals are combined at a state. With three composed teachers, $Δ$-MOPD exceeds endpoint composition by $4.11$ Math and $1.95$ five-benchmark points; with two, it matches endpoint accuracy. Under phased routing, it achieves higher mean performance in both phase orders and reduces the observed order gap from $10.50$ to $6.42$ points. Under interleaved routing, where each update involves one teacher, the two targets perform comparably. The phased results provide supporting evidence that the benefit may extend to signals accumulated across training phases. Target construction is thus an independent design axis in MOPD, complementary to teacher selection.
+
+### 🤖 AI 总结
+
+**一句话总结**：Multi-teacher on-policy distillation (MOPD) is used in two settings. In common-domain composition, several teachers score each student rollout from one prompt domain and their signals form a single ta...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Composing, What, Each, Teacher, Learned, Multi-Teacher, On-Policy, Distillation
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10460v1) | [下载PDF](https://arxiv.org/pdf/2610.10460v1.pdf)
+
+---
+
+## [29. NeuralBES: A Differentiable, Control-Aware Emulator for Scalable Building Energy Modeling](https://arxiv.org/abs/2610.10459v1)
+
+**作者**：Ting-Yu Dai, Takuya Kurihana, Wing Yee Au 等 4 位作者  
+**分类**：cs.LG  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Demand-side flexibility i.e. forecasting, shifting, and curtailing residential energy loads, depends on thermal models trusted across millions of heterogeneous buildings. Existing tools force a hard tradeoff: high-fidelity physics simulators such as EnergyPlus are accurate but sequential and require per-building calibration, while purely data-driven sequence models scale but abandon the physical structure that makes their predictions trustworthy.   We introduce NeuralBES (Building Energy Simulation), a differentiable emulator that resolves this tradeoff by parameterizing a resistance--capacitance (RC) based thermal model with a shared neural encoder: static building metadata such as floor area, vintage, and HVAC type is mapped to physically bounded capacitances, conductances, and equipment coefficients, which become the coefficients of a scalar linear recurrence solved via a log-space parallel scan, and a predictor--corrector loop closes the thermostat--temperature nonlinearity while preserving full-horizon gradient flow. Trained on the ResStock dataset across three climate zones, NeuralBES handles heterogeneous building archetypes, vintages, and climate zones within a single trained encoder, while black-box baselines produce statistically plausible but physically inconsistent trajectories. On the annual full-year rollout, NeuralBES is the only data-conditioned model that is simultaneously physics-valid and accurate to within 4 MAPE points of the strongest raw-error baseline, while operating at roughly an order of magnitude fewer parameters than the transformer and recurrent baselines; among physics-valid baselines at parameter parity it more than halves the MAPE of the grey-box RC alternative.
+
+### 🤖 AI 总结
+
+**一句话总结**：Demand-side flexibility i.e. forecasting, shifting, and curtailing residential energy loads, depends on thermal models trusted across millions of heterogeneous buildings. Existing tools force a hard t...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：NeuralBES, Differentiable, Control-Aware, Emulator, Scalable, Building, Energy, Modeling
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10459v1) | [下载PDF](https://arxiv.org/pdf/2610.10459v1.pdf)
+
+---
+
+## [30. Q-Learning with Scalar Adjoint Matching](https://arxiv.org/abs/2610.10437v1)
+
+**作者**：Yonghoon Dong, Minsung Yoon, Jaehyuk Kim 等 6 位作者  
+**分类**：cs.LG, cs.AI, cs.RO  
+**发布时间**：2026-10-07
+
+### 📄 论文摘要
+
+Flow policies capture rich and diverse action distributions, and fine-tuning them with off-policy RL to improve beyond the demonstrations has drawn growing interest. However, fine-tuning a flow policy against a learned value function is not trivial, because the policy generates its action over many flow steps. Adjoint matching offers a principled way to update the flow model itself by propagating value information from the final action back to each flow step, but it requires a vector--Jacobian product through the policy at every step, a cost that grows with the number of flow steps and the policy size. We observe that the batch-averaged velocity Jacobian of pretrained flow policies concentrates on its diagonal. Motivated by this finding, we derive a closed-form scalar adjoint that scales the value gradient at the final action by the flow time, eliminating the per-step vector--Jacobian products. We further find that controlling the critic's value at policy-generated actions is particularly important under the scalar adjoint. Based on these findings, we propose Q-learning with Scalar Adjoint Matching (SQAM), which combines the scalar adjoint with a value penalty at those actions. SQAM's gains concentrate on the four hardest OGBench domains, where its success rate exceeds that of the strongest baseline in each domain by 18 to 35 percentage points. To test whether SQAM extends to large pretrained policies, we also fine-tune a vision-language-action policy on a real bimanual robot. SQAM improves over supervised fine-tuning on all three tasks.
+
+### 🤖 AI 总结
+
+**一句话总结**：Flow policies capture rich and diverse action distributions, and fine-tuning them with off-policy RL to improve beyond the demonstrations has drawn growing interest. However, fine-tuning a flow policy...
+
+**研究动机**：自动分析失败，请查看原文
+
+**核心方法**：自动分析失败，请查看原文
+
+**主要结论**：自动分析失败，请查看原文
+
+**关键词**：Q-Learning, Scalar, Adjoint, Matching, Flow, policies, capture, rich
+
+**评分**：0
+
+**论文链接**：[查看原文](https://arxiv.org/abs/2610.10437v1) | [下载PDF](https://arxiv.org/pdf/2610.10437v1.pdf)
+
+---
+
